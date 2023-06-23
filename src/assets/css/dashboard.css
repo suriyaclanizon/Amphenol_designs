@@ -1,0 +1,317 @@
+@font-face {
+    font-family: Poppins-LightItalic;
+    src: url(../../font/Poppins-LightItalic.ttf);
+}
+@font-face {
+    font-family: Poppins-SemiBold;
+    src: url(../../font/Poppins-SemiBold.ttf);
+}
+@font-face {
+    font-family: Poppins-Medium;
+    src: url(../../font/Poppins-Medium.ttf);
+}
+.dash-hello-text{
+    font-size: 22px;
+    font-family: Poppins-LightItalic;
+}
+.dash-hello-text-bold{
+    font-family: Poppins-SemiBold;
+}
+.card-content{
+    color: #00415c !important;
+}
+.head2{
+    font-size: 50px;
+}
+
+.card-content h1{
+    font-family: Poppins-Medium;
+    font-size: 38px;
+    font-weight: 500;
+    letter-spacing: 0.02px;
+    padding: 21px 17px 14px;
+    margin-bottom: 0;
+}
+.card-content p{
+    font-family: Poppins-Medium;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.02px;
+    
+}
+
+
+.ts-heading{
+    font-family: Poppins-SemiBold;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.01px;
+    color: #03030a;
+}
+.btn_view{
+    padding: 5px 16px 5px 17px;
+    border-radius: 15px;
+    box-shadow: 0 2px 8px 2px rgba(230, 230, 230, 0.35);
+    border: solid 1px #006aad;
+    background-color: #ffffff;
+    display: inline-block;
+    font-size: 14px;
+    color: #006bae;
+    font-weight: 600;
+    font-family: Poppins-SemiBold;
+    cursor: pointer;
+}
+.details-heading{
+    color: #006bae;
+}
+.p-button{
+    margin: 3px !important ;
+    padding: 9px 12px 8px;
+    border-radius: 11.5px;
+    box-shadow: 0 2px 8px 2px rgba(230, 230, 230, 0.35);
+    border: solid 1px #006aad;
+    background-color: #006bae;
+}
+.head1 {
+    font-size: 24px;
+    font-weight: 600;
+}
+.cardcon{
+    padding: 16px 0 0 85px;
+}
+.cardDown{
+    display: flex;
+}
+.cardLeft {
+    padding-left: 14px;
+}
+.cardRight {
+    padding-left: 170px;
+}
+
+.logo-link{
+    position: absolute;
+    right: 16px;
+}
+.eye-icon-position{
+    top: 9px;
+    right: 12px;
+}
+
+.vs-card-inner{
+    padding: 10px 21px !important;
+}
+.vs-img-button{
+    padding: 5px 14px 5px 15px;
+    border-radius: 15px;
+    box-shadow: 0 2px 8px 2px rgba(230, 230, 230, 0.35);
+    border: solid 1px #006aad;
+    background-color: #fff;
+    font-family: Poppins-SemiBold;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.01px;
+    color: #006bae;
+}
+.vs-d-line{
+    height: 1px;
+    margin: 0 0 16px;
+    border: solid 1px #f0f0f0;
+    width: 100%;
+}
+
+
+
+
+
+
+/* override */
+
+/* layout */
+.layout-theme-light{
+    background-color: #f4f8fb !important;
+}
+.layout-topbar .layout-topbar-logo img{
+    height: auto !important;
+}
+
+/* left nav */
+.layout-menu li a{
+    font-family: Poppins-SemiBold;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.01px;
+    color: #59585b;
+}
+
+/* datatable */
+.p-datatable .p-datatable-tbody > tr > td{
+    border: 0;
+    text-align: center;
+    padding: 10px 10px;
+    color: #03030a;
+    font-family: Poppins-Medium;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.01px;
+}
+
+.p-datatable .p-datatable-thead > tr > th{
+    border: 0;
+    text-align: center;
+    padding: 10px 30px;
+    color: #89898a;
+    background: transparent;
+    font-family: Poppins-Medium;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.01px;
+}
+.p-datatable .p-column-header-content{
+    justify-content: center;
+}
+
+
+/* tab override */
+.p-tabmenu .p-tabmenu-nav {
+    background: transparent;
+    border: 0;
+}
+.p-tabmenu .p-tabmenu-nav .p-tabmenuitem.p-highlight .p-menuitem-link{
+    background: transparent;
+    border: 0;
+  
+}
+.p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link{
+    background: transparent;
+    border: 0;
+    font-family: Poppins-SemiBold;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.01px;
+    color: #59585b;
+}
+.p-tabmenu .p-tabmenu-nav .p-tabmenuitem:not(.p-highlight):not(.p-disabled):hover .p-menuitem-link{
+    background: transparent;
+}
+.p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link:not(.p-disabled):focus{
+    box-shadow: inset 0 0 0 0rem #C7D2FE;
+}
+
+/* calendar */
+.p-calendar-w-btn-right .p-datepicker-trigger{
+    background: transparent;
+    color: black;
+    border: solid 1px #e3e3e7;
+}
+.p-button:enabled:active, .p-button:not(button):not(a):not(.p-disabled):active{
+    background: transparent;
+    color: black;
+}
+.p-button:enabled:hover, .p-button:not(button):not(a):not(.p-disabled):hover{
+    background: transparent;
+    color: black;
+}
+
+
+/* input box */
+.p-inputtext{
+    border-radius: 18.5px;
+    border: solid 1px #e3e3e7;
+}
+.field > label{
+    color: #07070e;
+    font-family: Poppins-Medium;
+    /* font-size: 14px; */
+    font-weight: 500;
+    letter-spacing: 0.01px;
+}
+
+
+
+
+/* login Page */
+.login-wrapper{
+    background: #ffffff;
+    min-height: 100vh;
+    border: 6px solid #006aad;
+    border-width: 6px 0 6px;
+}
+.logo{
+    /* margin-top: 75px; */
+}
+.form-wrapper {
+    background-image: url(../../images/login-bg.png);
+    padding: 24px 62px 52px 42px;
+    background-repeat: no-repeat;
+    /* background-position: center; */
+    background-size: 100% 100%;
+  }
+  .l-heading{
+    font-family: Poppins-SemiBold;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 0.01px;
+    color: #006bae;
+    margin-bottom: 18px;
+    text-align: center;
+  }
+  .l-forget-text {
+    font-family: Poppins-Medium;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.01px;
+    color: #006bae;
+    margin-bottom: 18px;
+  }
+
+
+  
+@media (min-width: 1440px) {
+    .login-wrapper {
+        width: 1440px;
+        margin: 0 auto;
+    }
+    
+}
+
+@media (max-width: 992px){
+    .form-wrapper{
+        margin: 50px 150px;
+    }
+}
+@media (max-width: 768px){
+    .form-wrapper{
+        padding: 16px 52px 32px 22px;
+        margin: 30px 80px;
+    }
+    .logo{
+        width: 150px;
+        height: 55px;
+        /* margin-bottom: 16px; */
+    }
+}
+@media (max-width: 576px){
+    .form-wrapper{
+        padding: 16px 37px 32px 22px;
+        margin: 30px;
+    }
+    .dash-hello-text{
+        font-size: 16px;
+    }
+    .card-content h1{
+        font-size: 28px;
+    }
+    .p-datatable .p-datatable-thead > tr > th{
+        font-size: 13px;
+    }
+    .p-datatable .p-datatable-tbody > tr > td{
+        font-size: 12px;
+    }
+    .field > label{
+        font-size: 13px;
+    }
+    .l-forget-text{
+        font-size: 12px;
+    }
+}

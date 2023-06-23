@@ -1,0 +1,153 @@
+.payslip_title{
+  font-size: 20px;
+
+}
+/* .leave-card{
+  max-height: calc(100vh - 22rem);
+}
+.rightContent-card{
+  height: calc(100vh - 9rem);
+} */
+.arrow-img{
+  margin-top: 10px !important; 
+  margin-left: 20px;
+}
+.title{
+  display: flex;
+}
+
+.logo-name{
+  line-height: 45px;
+  padding-left: 5px;
+  font-size: 14px;
+font-weight: 600;
+color: #242424;
+}
+
+.emp_input{
+  display: flex;
+}
+
+.leave_title{
+  margin-bottom: 26px;
+  margin-left: 12px;
+}
+.line{
+  border: 1px solid #f0f0f0;
+  margin-bottom: 20px;
+}
+.btn1{
+    display: flex;
+  position: absolute;
+  right: 40px;
+  margin-top: -57px;
+}
+.Upbtn {
+    padding: 0 30px 0 20px;
+}
+.leave_btn{
+border: none;
+border-radius: 5px;
+}
+.apply_btn{
+  position: absolute;
+  display: flex;
+  right: 0;
+  margin-top: -63px;
+  margin-right: 40px;
+}
+.pay_img{
+  margin-right: 5px;
+  width: 5px;
+  height: 5px;
+}
+.drop{
+  height: 3rem;
+  display: flex;
+  padding-left: 485px;
+}
+
+.layout-main-container {
+display: flex;
+flex-direction: column;
+min-height: 0px;
+justify-content: space-between;
+padding: 7rem 2rem 2rem 4rem !important;
+transition: margin-left 0.2s;
+} 
+
+.p-datepicker-trigger {
+color: black;
+border: 1px solid #ced4da;
+background: white;
+padding: 0.75rem 1.25rem;
+font-size: 1rem;
+transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+border-radius: 6px;
+}
+
+.col-dialog{
+display: flex;
+}
+.save_dialog_btn{
+width: 60px;
+height: 36px;
+border-radius: 5px;
+font-size: 14px;
+font-weight: 500;
+color: #ffffff !important;
+background-color: #1f96de;
+border: none;
+float: right;
+}
+.cancel_dialog_btn{
+width: 80px;
+height: 35px;
+border-radius: 5px;
+font-size: 14px;
+font-weight: 500;
+color: #a4a4a4 !important;
+background-color: rgba(216, 216, 216, 0.6);
+border: none;
+}
+
+.slash{
+width: 18px;
+height: 30px;
+color: #2e2e2e
+}
+.bar{
+padding-left: 6px;
+padding-right: 5px;
+}
+.score-box2{
+margin-left: 7px;
+}
+
+.emp_title{
+  border: 1px solid #f3f6f8;
+  background-color: #f3f6f8;
+  padding: 17px 0 6px 12px;
+}
+.emp_title1{
+  font-weight: 600;
+  font-size: 22px;
+}
+.card {
+    background: var(--surface-card);
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+.content{
+    display: flex;
+    justify-content: space-between;
+}
+.Savebtn{
+    float: right;
+}
+.dropMonth{
+    background-color:#006aad ;
+    color: #ffffff !important;
+    border-radius: 15px;
+}
