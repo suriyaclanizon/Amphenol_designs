@@ -50,14 +50,14 @@ const Schedule = () => {
     ];
     const data = [
         
-        {Date: "09 Jun, 2023", PartNumber: "Cable", ClientName: "10000",Counts:"200"},
-        {Date: "09 Jun, 2023", PartNumber: "Grommet",ClientName: "20000",Counts:"500" },
-        {Date: "09 Jun, 2023", PartNumber: "Band Cable",ClientName: "50000",Counts:"300" },
-        {Date: "09 Jun, 2023", PartNumber: "Grommet",ClientName :"40000",Counts:"400" },
-        {Date: "09 Jun, 2023", PartNumber: "Grommet",ClientName :"40000",Counts:"400" },
-        {Date: "09 Jun, 2023", PartNumber: "Grommet",ClientName :"40000",Counts:"400" },
-        {Date: "09 Jun, 2023", PartNumber: "Grommet",ClientName :"40000",Counts:"400" },
-        
+        {CustomerName: "Sanden Vikas", PartNumber: "2884-0850V", LineNumber: "10000",Zone:"Zone -1",Particular:"Target",Jan01:"200",Jan02:"200",Jan03:"200",Jan04:"200",Jan05:"200",Jan06:"200",Jan07:"200",Jan08:"200"},
+        {CustomerName: "Sanden Vikas", PartNumber: "Grommet",LineNumber: "20000",Zone:"Zone -1" ,Particular:"Target",Jan01:"200",Jan02:"200",Jan03:"200",Jan04:"200",Jan05:"200",Jan06:"200",Jan07:"200",Jan08:"200"},
+        {CustomerName: "Tata Ficosa", PartNumber: "Band Cable",LineNumber: "50000",Zone:"Zone -1",Particular:"Target",Jan01:"200",Jan02:"200",Jan03:"200",Jan04:"200",Jan05:"200",Jan06:"200",Jan07:"200",Jan08:"200" },
+        {CustomerName: "Joysonsafety", PartNumber: "Grommet",LineNumber :"40000",Zone:"Zone -1" ,Particular:"Target",Jan01:"200",Jan02:"200",Jan03:"200",Jan04:"200",Jan05:"200",Jan06:"200",Jan07:"200",Jan08:"200"},
+        {CustomerName: "AUTOLIV INDIA PVT LTD", PartNumber: "Grommet",LineNumber :"40000",Zone:"Zone -1",Particular:"Target",Jan01:"200",Jan02:"200",Jan03:"200",Jan04:"200",Jan05:"200",Jan06:"200",Jan07:"200",Jan08:"200" },
+        {CustomerName: "Minda Corporation", PartNumber: "Grommet",LineNumber :"40000",Zone:"Zone -2",Particular:"Target",Jan01:"200",Jan02:"200",Jan03:"200",Jan04:"200",Jan05:"200",Jan06:"200",Jan07:"200",Jan08:"200" },
+        {CustomerName: "Rane TRW Steering  Systems Ltd", PartNumber: "Grommet",LineNumber :"40000",Zone:"Zone -2" ,Particular:"Target",Jan01:"200",Jan02:"200",Jan03:"200",Jan04:"200",Jan05:"200",Jan06:"200",Jan07:"200",Jan08:"200"},
+        {CustomerName: "MAHLEV", PartNumber: "Grommet",LineNumber :"40000",Zone:"Zone -2" ,Particular:"Target",Jan01:"200",Jan02:"200",Jan03:"200",Jan04:"200",Jan05:"200",Jan06:"200",Jan07:"200",Jan08:"200"},
     ];
     const iconTemplate = () => (
         <i className={` pi pi-trash`} style={{ fontSize: '1.5rem', color: 'green' }}></i>
@@ -83,22 +83,21 @@ const Schedule = () => {
                 <div className="card leave_table">
                     <DataTable className='' value={records}
                          responsiveLayout="scroll">
-                        <Column field="Date" header="Date" style={{ minWidth: '200px' }}></Column>
+                        <Column field="CustomerName" header="Customer Name" style={{ minWidth: '200px' }}></Column>
                         <Column field="PartNumber" header="Part Number" style={{ minWidth: '200px' }} ></Column>
-                        <Column field="ClientName" header="Client Name" style={{ minWidth: '200px' }} ></Column>
-                        <Column field="Counts" header="Counts" style={{ minWidth: '200px' }} ></Column>
-                        <Column body={iconTemplate} style={{ textAlign: 'center' }}></Column>
+                        <Column field="LineNumber" header="Line Number " style={{ minWidth: '200px' }} ></Column>
+                        <Column field="Zone" header="Zone" style={{ minWidth: '200px' }} ></Column>
+                        <Column field="Particular" header="Particular" style={{ minWidth: '200px' }}></Column>
+                        <Column field="Jan01" header="01 Jan" style={{ minWidth: '200px' }} ></Column>
+                        <Column field="Jan02" header="02 Jan " style={{ minWidth: '200px' }} ></Column>
+                        <Column field="Jan03" header="03 Jan" style={{ minWidth: '200px' }} ></Column>
+                        <Column field="Jan04" header="04 Jan" style={{ minWidth: '200px' }}></Column>
+                        <Column field="Jan05" header="05 Jan" style={{ minWidth: '200px' }} ></Column>
+                        <Column field="Jan06" header="06 Jan " style={{ minWidth: '200px' }} ></Column>
+                        <Column field="Jan07" header="07 Jan" style={{ minWidth: '200px' }} ></Column>
+                        <Column field="Jan08" header="08 Jan" style={{ minWidth: '200px' }} ></Column>
                     </DataTable>
-                    <div className=" content">
-            <Calendar value={date} onChange={(e) => setDate(e.value)} showIcon />
-            <Dropdown value={selectedCity} onChange={(e) => setSelectedCity(e.value)} options={cities} optionLabel="name" 
-                placeholder="" className="w-full md:w-14rem" />
-                <Dropdown value={selectedCity} onChange={(e) => setSelectedCity(e.value)} options={cities} optionLabel="name" 
-                placeholder="" className="w-full md:w-14rem" />
-                 <InputText value={value} onChange={(e) => setValue(e.target.value)} />
-                 
-        </div>
-        <Button className="Savebtn" label="Save" onClick={() => setVisible(true)} />
+                    
                 </div>
                 
         

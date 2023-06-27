@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
-
 import dash1 from "../images/dash1.png"
 import dash2 from "../images/dash2.png"
 import dash3 from "../images/dash3.png"
-
 import { InputText } from 'primereact/inputtext';
 import "../assets/css/dashboard.css"
 import { useStoreActions, useStoreState } from 'easy-peasy';
@@ -59,15 +57,15 @@ const Dashboard = () => {
     return (
         <>
             <div className='flex md:flex-row flex-column justify-content-between align-items-center lg:mt-5 mb-3'>
-                <div className='dash-hello-text'><span className='dash-hello-text-bold'>Dashboard</span></div>
+                <div className='dash-hello-text'><span className='dash-hello-text-bold'>Hello</span> Admin!</div>
             </div>
             <div className="grid">
-            <div className="main">
             <div className="col-12 sm:col-6 md:col-4 xl:col-3 relative">
                 <img src={dash1} className='w-full' />
                 <div className='absolute top-0  card-content'>
                     <div className="cardcon">
                     <h2 className="head1">Zone 1</h2>
+
                     <p>09 Jun, 2023</p>
                     <h4 className="head2">3256</h4>
                     </div>
@@ -80,9 +78,8 @@ const Dashboard = () => {
                 <h3>5000</h3>
                     <p>QA Rejected</p>
                 </div>
-                </div>
-                </div>
-                
+            </div>
+            </div>
             </div>
             <div className="col-12 sm:col-6 md:col-4 xl:col-3 relative">
                 <img src={dash2} className='w-full' />
@@ -103,9 +100,10 @@ const Dashboard = () => {
                 </div>
                 </div>
                 </div>
-            </div>
             
-            <div className="col-12 sm:col-6 md:col-4 xl:col-3 relative ">
+            
+            </div>
+            <div className="col-12 sm:col-6 md:col-4 xl:col-3 relative">
                 <img src={dash3} className='w-full' />
                 <div className='absolute top-0  card-content'>
                     <div className="cardcon">
@@ -124,8 +122,8 @@ const Dashboard = () => {
                 </div>
                 </div>
                 </div>
+            
             </div>
-        </div>
         </div>
         </>
         
