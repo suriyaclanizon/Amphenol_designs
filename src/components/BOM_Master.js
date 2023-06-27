@@ -27,7 +27,8 @@ const BOM_Master = () => {
         setRecords(data);
     }, []);
   return (
-    <div>
+    <div
+    >
         <div className="grid table-demo">
         <div className="col-12">
                 <div className="card leave_table">
@@ -36,7 +37,8 @@ const BOM_Master = () => {
                         <Column field="PartNumber" header="Part Number" style={{ minWidth: '200px' }}></Column>
                         <Column field="Citemno" header="Citemno" style={{ minWidth: '200px' }} ></Column>
                         <Column field="ItemDescription" header="Item Description" style={{ minWidth: '200px' }} ></Column>
-                        <Column field="Quantity " header="Quantity mmm" style={{ minWidth: '200px' }} ></Column>
+                        <Column field="Quantity" header="Quantity" style={{ minWidth: '200px' }} ></Column>
+                        
                     </DataTable>
                 </div>
             </div>
