@@ -33,19 +33,9 @@ const Login = () => {
             user_name: data.userEmail,
             password: data.password
         }
-
+        goto("/app")
         setIsLoading(true);
-        axios.post(constants.URL.SIGNIN,payload)
-        .then((resp)=>{
-            // console.log(resp);
-            setIsAuthenticated(true)
-            goto("/app/defaultnav")
-        }).catch((e)=>{
-            toast.current.show({ severity: "error", summary: "Failure", detail: e.response.data.message });
-            console.error(e);
-        }).finally(()=>{
-            setIsLoading(false);
-        })
+        
     }
     const goto = (to) => {
         history.replace(to);
