@@ -34,7 +34,7 @@ const Master = () => {
         <Button className="btn" label="Edit"  /> */}
        
             <div className="Trainee-wrapper lg:mt-4">
-                <div className="flex justify-content-between">
+                <div className="flex justify-content-between card">
                     
                 <TabMenu model={items} activeIndex={activeIndex} onTabChange={(e) => setActiveIndex(e.index)} />
                         <Button className="btn" label="Add" />

@@ -69,9 +69,9 @@ const Schedule = () => {
   return (
     <div>
         <div className="card p-fluid">
-                        <div className="title1 mt-2">
+                        <div className="title1 mt-2 flex justify-content-between">
                             <h3 className="leave_title pt-2">Schedule</h3>
-                            <div className="btn1">
+                            <div className="flex">
                             <Dropdown value={months} onChange={(e) => setMonths(e.target.value)} options={month} optionLabel="name" placeholder="Month" className="dropMonth" />
                                 <Button className="Upbtn" label="Upload" onClick={() => setVisible(true)} />
                                 
