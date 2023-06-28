@@ -22,63 +22,64 @@ const Planner = () => {
         { name: 'Paris', code: 'PRS' }
     ];
     const data = [
-        
-        {Date: "09 Jun, 2023", PartNumber: "Cable", ClientName: "10000",Counts:"200"},
-        {Date: "09 Jun, 2023", PartNumber: "Grommet",ClientName: "20000",Counts:"500" },
-        {Date: "09 Jun, 2023", PartNumber: "Band Cable",ClientName: "50000",Counts:"300" },
-        {Date: "09 Jun, 2023", PartNumber: "Grommet",ClientName :"40000",Counts:"400" },
-        {Date: "09 Jun, 2023", PartNumber: "Grommet",ClientName :"40000",Counts:"400" },
-        {Date: "09 Jun, 2023", PartNumber: "Grommet",ClientName :"40000",Counts:"400" },
-        {Date: "09 Jun, 2023", PartNumber: "Grommet",ClientName :"40000",Counts:"400" },
-        
+
+        { Date: "09 Jun, 2023", PartNumber: "Cable", ClientName: "10000", Counts: "200" },
+        { Date: "09 Jun, 2023", PartNumber: "Grommet", ClientName: "20000", Counts: "500" },
+        { Date: "09 Jun, 2023", PartNumber: "Band Cable", ClientName: "50000", Counts: "300" },
+        { Date: "09 Jun, 2023", PartNumber: "Grommet", ClientName: "40000", Counts: "400" },
+        { Date: "09 Jun, 2023", PartNumber: "Grommet", ClientName: "40000", Counts: "400" },
+        { Date: "09 Jun, 2023", PartNumber: "Grommet", ClientName: "40000", Counts: "400" },
+        { Date: "09 Jun, 2023", PartNumber: "Grommet", ClientName: "40000", Counts: "400" },
+
     ];
     const iconTemplate = () => (
         <i className={` pi pi-trash`} style={{ fontSize: '1.5rem', color: 'green' }}></i>
-      );
+    );
 
     useEffect(() => {
         setRecords(data);
     }, []);
-  return (
-    <div>
-        <div className="card p-fluid">
-                        <div className="title1 mt-2">
-                            <h3 className="leave_title pt-2">Add Plan</h3>
-                            <div className="btn1">
-                                <Button className="Upbtn" label="Upload" onClick={() => setVisible(true)} />
-                                <Button className="btn" label="Edit" onClick={() => setVisible(true)} />
-                                </div>
-                                </div>
-                                </div>
-        <div className="grid table-demo">
-        <div className="col-12">
-                <div className="card leave_table">
-                    <DataTable className='' value={records}
-                         responsiveLayout="scroll">
-                        <Column field="Date" header="Date" style={{ minWidth: '200px' }}></Column>
-                        <Column field="PartNumber" header="Part Number" style={{ minWidth: '200px' }} ></Column>
-                        <Column field="ClientName" header="Client Name" style={{ minWidth: '200px' }} ></Column>
-                        <Column field="Counts" header="Counts" style={{ minWidth: '200px' }} ></Column>
-                        <Column body={iconTemplate} style={{ textAlign: 'center' }}></Column>
-                    </DataTable>
-                    <div className=" content">
-            <Calendar value={date} onChange={(e) => setDate(e.value)} showIcon />
-            <Dropdown value={selectedCity} onChange={(e) => setSelectedCity(e.value)} options={cities} optionLabel="name" 
-                placeholder="" className="w-full md:w-14rem" />
-                <Dropdown value={selectedCity} onChange={(e) => setSelectedCity(e.value)} options={cities} optionLabel="name" 
-                placeholder="" className="w-full md:w-14rem" />
-                 <InputText value={value} onChange={(e) => setValue(e.target.value)} />
-                 
-        </div>
-        <Button className="Savebtn" label="Save" onClick={() => setVisible(true)} />
+    return (
+        <div>
+            <div className="card p-fluid">
+                <div className="title1 mt-2 flex justify-content-between">
+                    <h3 className="leave_title pt-2">Add Plan</h3>
+                    <div className="flex">
+                        <Button className="Upbtn" label="Upload" onClick={() => setVisible(true)} />
+                        <Button className="btn" label="Edit" onClick={() => setVisible(true)} />
+                    </div>
                 </div>
-                
-        
             </div>
+            <div className="grid table-demo">
+                <div className="col-12">
+                    <div className="card leave_table">
+                        <DataTable className='' value={records}
+                            responsiveLayout="scroll">
+                            <Column field="Date" header="Date" style={{ minWidth: '200px' }}></Column>
+                            <Column field="PartNumber" header="Part Number" style={{ minWidth: '200px' }} ></Column>
+                            <Column field="ClientName" header="Client Name" style={{ minWidth: '200px' }} ></Column>
+                            <Column field="Counts" header="Counts" style={{ minWidth: '200px' }} ></Column>
+                            <Column body={iconTemplate} style={{ textAlign: 'center' }}></Column>
+                        </DataTable>
+                        <div className=" content">
+                            <Calendar value={date} onChange={(e) => setDate(e.value)} showIcon />
+                            <Dropdown value={selectedCity} onChange={(e) => setSelectedCity(e.value)} options={cities} optionLabel="name"
+                                placeholder="" className="w-full md:w-14rem" />
+                            <Dropdown value={selectedCity} onChange={(e) => setSelectedCity(e.value)} options={cities} optionLabel="name"
+                                placeholder="" className="w-full md:w-14rem" />
+                            <InputText value={value} onChange={(e) => setValue(e.target.value)} />
+
+                        </div>
+                        <div className="Savebtn">
+                            <Button label="Save" onClick={() => setVisible(true)} /></div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
         </div>
-      
-      
-    </div>
-  )
+    )
 }
 export default Planner

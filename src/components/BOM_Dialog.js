@@ -48,50 +48,47 @@ const BOM_Dialog = () => {
             <ConfirmDialog />
             
                     <div className="card p-fluid">
-                        <div className="title1 mt-2">
+                        <div className="title1 mt-2 flex justify-content-between">
                             <h3 className="leave_title pt-2">BOM Master</h3>
-                            <div className="btn1">
+                            <div className="flex">
                                 <Button className="btn1" label="Edit" onClick={() => setVisible(true)} />
-
-                                <Dialog header="Edit" visible={visible} style={{ width: "40vw" }} onHide={() => setVisible(false)}>
-                                    <div className="formgrid grid">
-                                        
-                                        <div className="field col-6 ">
-                                            <label htmlFor="name2">Part Number</label>
-                                            </div>
-                                            <div className="field col-6 ">
-                                            <Select options={options} onChange={handleOptionChange} className="w-full " />
-      
-                                            {/* <InputText className="w-full " /> */}
-                                            </div>
-                                        
-                                        
-                                        <div className="field col-6 ">
-                                            <label htmlFor="name2">Quantity Par Per</label>
-                                            </div>
-                                            <div className="field col-6 ">
-                                            <InputText className="w-full " />
-                                            </div>
-                                        
-                                    </div>
-
-                                    
-                                        
-                                    
-                                    <div className="dialog-btn">
-                                        {/* <button className="save_dialog_btn mr-4" type="submit">
-                                            Save
-                                        </button> */}
-                                        <Button label="Save"  onClick={() => confirm('top')} className="save_dialog_btn mr-4" style={{ minWidth: '10rem' }} />
-                                        {/* <button className="cancel_dialog_btn" type="submit">
-                                            Cancel
-                                        </button> */}
-                                    </div>
-                                </Dialog>
                             </div>
                         </div>
-                        <BOM_Master />
                     </div>
+                        <BOM_Master />
+
+<Dialog header="Edit" visible={visible} style={{ width: "40vw" }} onHide={() => setVisible(false)}>
+    <div className="formgrid grid">
+        
+        <div className="field col-6 ">
+            <label htmlFor="name2">Part Number</label>
+            </div>
+            <div className="field col-6 ">
+            <Select options={options} onChange={handleOptionChange} className="w-full " />
+
+            {/* <InputText className="w-full " /> */}
+            </div>
+        
+        
+        <div className="field col-6 ">
+            <label htmlFor="name2">Quantity Par Per</label>
+            </div>
+            <div className="field col-6 ">
+            <InputText className="w-full " />
+            </div>
+        
+    </div>
+
+    
+        
+    
+    <div className="dialog-btn">
+        <Button label="Save"  onClick={() => confirm('top')} className="save_dialog_btn mr-4" style={{ minWidth: '10rem' }} />
+        {/* <button className="cancel_dialog_btn" type="submit">
+            Cancel
+        </button> */}
+    </div>
+</Dialog>
                 </div>
           
     );

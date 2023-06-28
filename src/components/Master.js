@@ -34,7 +34,11 @@ const Master = () => {
         <Button className="btn" label="Edit"  /> */}
        
             <div className="Trainee-wrapper lg:mt-4">
+                <div className="flex justify-content-between">
+                    
                 <TabMenu model={items} activeIndex={activeIndex} onTabChange={(e) => setActiveIndex(e.index)} />
+                        <Button className="btn" label="Add" />
+                </div>
                 {/* <Route exact path="/app/allTrainee" component={AllTrainee}></Route>
                 <Route path="/app/allTrainee/addtrainee" component={AddTrainee}></Route> */}
                 {activeIndex === 0 && <Store />}
