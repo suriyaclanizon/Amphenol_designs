@@ -70,7 +70,7 @@ const Schedule = () => {
     <div>
         <div className="card p-fluid">
                         <div className="title1 mt-2">
-                            <h3 className="leave_title pt-2">Add Plan</h3>
+                            <h3 className="leave_title pt-2">Schedule</h3>
                             <div className="btn1">
                             <Dropdown value={months} onChange={(e) => setMonths(e.target.value)} options={month} optionLabel="name" placeholder="Month" className="dropMonth" />
                                 <Button className="Upbtn" label="Upload" onClick={() => setVisible(true)} />
