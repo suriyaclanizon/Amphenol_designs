@@ -82,7 +82,7 @@ const Dashboard = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="col-12 sm:col-6 md:col-4 xl:col-3 relative">
+                    <div className="relative">
 
                         <div className='card-content1'>
 
@@ -142,9 +142,9 @@ const Dashboard = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="col-12 sm:col-6 md:col-4 xl:col-3 relative">
+                    <div className=" relative">
 
-                        <div className='absolute top-0  card-content1'>
+                        <div className=' card-content1'>
 
                             <div className="cardDown">
                                 <div className="cardLeft">
@@ -202,9 +202,9 @@ const Dashboard = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="col-12 sm:col-6 md:col-4 xl:col-3 relative">
+                    <div className="relative">
 
-                        <div className='absolute top-0  card-content1'>
+                        <div className='card-content1'>
 
                             <div className="cardDown">
                                 <div className="cardLeft">

@@ -87,12 +87,13 @@
 }
 .cardDown{
     display: flex;
+    justify-content: space-between;
 }
 .cardLeft {
     padding-left: 14px;
 }
 .cardRight {
-    padding-left: 170px;
+    /* padding-left: 170px; */
 }
 
 .logo-link{
