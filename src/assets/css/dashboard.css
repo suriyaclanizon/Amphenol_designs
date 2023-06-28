@@ -84,6 +84,7 @@
 }
 .cardcon{
     padding: 16px 0 0 85px;
+    text-align: center;
 }
 .cardDown{
     display: flex;
@@ -93,6 +94,7 @@
     padding-left: 14px;
 }
 .cardRight {
+    padding-right: 10px;
     /* padding-left: 170px; */
 }
 
@@ -248,11 +250,28 @@
     /* margin-top: 75px; */
 }
 .form-wrapper {
-    background-image: url(../../images/login-bg.png);
+    border-radius: 15px;
+    box-shadow: 0 0 13px 0 rgba(0, 0, 0, 0.13);
     padding: 24px 62px 52px 42px;
-    background-repeat: no-repeat;
-    /* background-position: center; */
-    background-size: 100% 100%;
+    
+    margin-top: 40px;
+  }
+  .top{
+    /* display: flex;
+    width: 100%;
+    align-items: center; */
+   
+  }
+  .container{
+    background-color: white;
+    border-top: 5px solid #006aad;
+  }
+  .top_right{
+    width: 40%;
+  }
+  .top_left{
+    width: 60%;
+    text-align: center;
   }
   .l-heading{
     font-family: Poppins-SemiBold;
