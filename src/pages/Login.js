@@ -33,7 +33,7 @@ const Login = () => {
             user_name: data.userEmail,
             password: data.password
         }
-        goto("/app")
+        goto("/app/defaultnav")
         setIsLoading(true);
         
     }
