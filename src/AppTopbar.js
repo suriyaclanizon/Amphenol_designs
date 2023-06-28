@@ -2,7 +2,8 @@ import React, { useRef }  from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import classNames from 'classnames';
 import logo from './images/amphenol-logo.png';
-import profile from './images/profile-pic.png';
+import profile from './images/Profile img.png';
+import arrow from './images/arrow.png';
 import { Menu } from 'primereact/menu';
 import { useStoreActions } from 'easy-peasy';
 
@@ -34,6 +35,7 @@ export const AppTopbar = (props) => {
             </Link>
 
             <div className="logo-link ms-sm-5 hover_cursor" onClick={(e) => menu.current.toggle(e)}>
+            <img className="rightLogo mr-3 mb-1" height="20" width="20" src={arrow} />
                 <img className="rightLogo mr-2" height="30" width="30" src={profile} />
             </div>
 
