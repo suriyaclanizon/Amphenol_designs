@@ -71,13 +71,13 @@ const Dashboard = () => {
                             <p>09 Jun, 2023</p>
                             <h4 className="head2">3256</h4>
                         </div>
-                        <div className="cardDown">
+                        <div className="cardDown1">
                             <div className="cardLeft">
                                 <h3>5000</h3>
                                 <p>Target No</p>
                             </div>
-                            <div className="cardRight">
-                                <h3>5000</h3>
+                            <div className="cardRight1">
+                                <h3>32</h3>
                                 <p>QA Rejected</p>
                             </div>
                         </div>
@@ -93,7 +93,7 @@ const Dashboard = () => {
                                     <p>San - 01</p>
                                 </div>
                                 <div className="cardRight">
-                                    <h3>315</h3>
+                                    <h3 className="head4">315</h3>
                                     <p>450</p>
                                 </div>
                             </div>
@@ -104,7 +104,7 @@ const Dashboard = () => {
                                     <p>Vistra & Nexon line</p>
                                 </div>
                                 <div className="cardRight">
-                                    <h4>315</h4>
+                                    <h4 className="head4">315</h4>
                                     <p>450</p>
                                 </div>
                             </div>
@@ -115,7 +115,7 @@ const Dashboard = () => {
                                     <p>FCA Line</p>
                                 </div>
                                 <div className="cardRight">
-                                    <h3>315</h3>
+                                    <h3 className="head4">315</h3>
                                     <p>450</p>
                                 </div>
                             </div>
@@ -131,13 +131,13 @@ const Dashboard = () => {
                             <p>09 Jun, 2023</p>
                             <h4 className="head2">3256</h4>
                         </div>
-                        <div className="cardDown">
+                        <div className="cardDown1">
                             <div className="cardLeft">
                                 <h3>5000</h3>
                                 <p>Target No</p>
                             </div>
                             <div className="cardRight">
-                                <h3>5000</h3>
+                                <h3>54</h3>
                                 <p>QA Rejected</p>
                             </div>
                         </div>
@@ -153,7 +153,7 @@ const Dashboard = () => {
                                     <p>YTA LH line</p>
                                 </div>
                                 <div className="cardRight">
-                                    <h3>315</h3>
+                                    <h3 className="head4">315</h3>
                                     <p>450</p>
                                 </div>
                             </div>
@@ -164,7 +164,7 @@ const Dashboard = () => {
                                     <p>SK216 Valeo</p>
                                 </div>
                                 <div className="cardRight">
-                                    <h4>315</h4>
+                                    <h4 className="head4">315</h4>
                                     <p>450</p>
                                 </div>
                             </div>
@@ -175,7 +175,7 @@ const Dashboard = () => {
                                     <p>Joy-01</p>
                                 </div>
                                 <div className="cardRight">
-                                    <h3>315</h3>
+                                    <h3 className="head4">315</h3>
                                     <p>450</p>
                                 </div>
                             </div>
@@ -191,13 +191,13 @@ const Dashboard = () => {
                             <p>09 Jun, 2023</p>
                             <h4 className="head2">3256</h4>
                         </div>
-                        <div className="cardDown">
+                        <div className="cardDown1">
                             <div className="cardLeft">
                                 <h3>5000</h3>
                                 <p>Target No</p>
                             </div>
                             <div className="cardRight">
-                                <h3>5000</h3>
+                                <h3>48</h3>
                                 <p>QA Rejected</p>
                             </div>
                         </div>
@@ -213,7 +213,7 @@ const Dashboard = () => {
                                     <p>FCA Line</p>
                                 </div>
                                 <div className="cardRight">
-                                    <h3>315</h3>
+                                    <h3 className="head4">315</h3>
                                     <p>450</p>
                                 </div>
                             </div>
@@ -224,7 +224,7 @@ const Dashboard = () => {
                                     <p>Varr - 02</p>
                                 </div>
                                 <div className="cardRight">
-                                    <h4>315</h4>
+                                    <h3 className="head4">600</h3>
                                     <p>450</p>
                                 </div>
                             </div>
@@ -235,7 +235,7 @@ const Dashboard = () => {
                                     <p>SK216 Valeo</p>
                                 </div>
                                 <div className="cardRight">
-                                    <h3>315</h3>
+                                    <h3 className="head4">700</h3>
                                     <p>450</p>
                                 </div>
                             </div>

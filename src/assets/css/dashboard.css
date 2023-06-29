@@ -86,15 +86,34 @@
     padding: 16px 0 0 85px;
     text-align: center;
 }
+.cardDown1{
+    display: flex;
+    justify-content:space-between ;
+    align-items: center;
+}
+.card-content1{
+    margin: 10px;
+}
+.head4{
+    font-size: 15px;
+    font-weight: 600;
+}
 .cardDown{
+    margin: 5px;
     display: flex;
     justify-content: space-between;
+    border: 1px solid #f2f2f2;
+    border-radius: 15px;
+    background-color: 
+    #f0f3f4;
 }
 .cardLeft {
     padding-left: 14px;
+    margin: 5px;
 }
 .cardRight {
     padding-right: 10px;
+    margin: 5px;
     /* padding-left: 170px; */
 }
 
@@ -270,6 +289,7 @@
     width: 40%;
   }
   .top_left{
+    
     width: 60%;
     text-align: center;
   }
