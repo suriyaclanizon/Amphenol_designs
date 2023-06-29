@@ -82,23 +82,35 @@
     font-size: 24px;
     font-weight: 600;
 }
-.cardcon{
-    padding: 16px 0 0 85px;
-    text-align: center;
+.dash-card-content{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   width:100%;
 }
-.cardDown1{
+.dash-card-inner{
     display: flex;
     justify-content:space-between ;
     align-items: center;
 }
-.card-content1{
+.dash-down-card{
     margin: 10px;
+}
+.dash-color-card{
+    width:100%;
+    top:20px ;
 }
 .head4{
     font-size: 15px;
     font-weight: 600;
 }
-.cardDown{
+.head5{
+    font-size: 24px;
+    font-weight: 600;
+    text-align: right;
+}
+.dash-card-content1{
     margin: 5px;
     display: flex;
     justify-content: space-between;
@@ -107,11 +119,11 @@
     background-color: 
     #f0f3f4;
 }
-.cardLeft {
+.dash-card-left {
     padding-left: 14px;
     margin: 5px;
 }
-.cardRight {
+.dash-card-right {
     padding-right: 10px;
     margin: 5px;
     /* padding-left: 170px; */
