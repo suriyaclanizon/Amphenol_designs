@@ -95,8 +95,8 @@ display: flex;
 }
 .save_dialog_btn{
 width: 60px;
-height: 36px;
-border-radius: 5px;
+
+border-radius: 6px;
 font-size: 14px;
 font-weight: 500;
 color: #ffffff !important;

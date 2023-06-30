@@ -57,7 +57,7 @@ const BOM_Dialog = () => {
                     </div>
                         <BOM_Master />
 
-<Dialog header="Edit" visible={visible} style={{ width: "40vw" }} onHide={() => setVisible(false)}>
+<Dialog header="Edit" visible={visible} style={{ width: "30vw" }} onHide={() => setVisible(false)}>
     <div className="formgrid grid">
         
         <div className="field col-6 ">
@@ -83,7 +83,7 @@ const BOM_Dialog = () => {
         
     
     <div className="dialog-btn">
-        <Button label="Save"  onClick={() => confirm('top')} className="save_dialog_btn mr-4" style={{ minWidth: '10rem' }} />
+        <Button label="Save"  onClick={() => confirm('top')} className="save_dialog_btn mr-4" style={{ minWidth: '3rem' }} />
         {/* <button className="cancel_dialog_btn" type="submit">
             Cancel
         </button> */}
