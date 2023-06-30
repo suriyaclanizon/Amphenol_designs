@@ -186,9 +186,9 @@
 
 /* datatable */
 .p-datatable .p-datatable-tbody > tr > td{
-    border: 0;
-    text-align: center;
-    padding: 10px 10px;
+    /* border: 0; */
+    text-align: left;
+    /* padding: 10px 10px; */
     color: #03030a;
     font-family: Poppins-Medium;
     font-size: 13px;
@@ -197,19 +197,17 @@
 }
 
 .p-datatable .p-datatable-thead > tr > th{
-    border: 0;
-    text-align: center;
-    padding: 10px 30px;
-    color: #89898a;
+    /* border: 0; */
+    text-align: left;
+   
+    color: black;
     background: transparent;
     font-family: Poppins-Medium;
     font-size: 14px;
     font-weight: 500;
     letter-spacing: 0.01px;
 }
-.p-datatable .p-column-header-content{
-    justify-content: center;
-}
+
 
 
 /* tab override */
