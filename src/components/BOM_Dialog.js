@@ -34,11 +34,12 @@ const BOM_Dialog = () => {
       const confirm = (position) => {
           confirmDialog({
               message: 'Are you sure edit this field?',
-              header: 'Delete Confirmation',
-              icon: 'pi pi-info-circle',
+              
               position,
               accept,
-              reject
+              reject,
+              
+              className: 'custom-confirm-dialog'
           });
         };
     

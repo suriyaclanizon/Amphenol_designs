@@ -93,6 +93,11 @@ border-radius: 6px;
 .col-dialog{
 display: flex;
 }
+.custom-confirm-dialog{
+  display: flex !important;
+  flex-direction: row !important;
+ 
+}
 .save_dialog_btn{
 width: 60px;
 

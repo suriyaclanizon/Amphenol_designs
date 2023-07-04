@@ -182,8 +182,8 @@ const App = () => {
                 { label: 'Dashboard', icon: 'pi pi-fw pi-home', to: '/app/defaultnav' },
                 { label: 'BOM Master', icon: 'pi pi-fw pi-file', to: '/app/BOM_Dialog' },
                 { label: 'Store', icon: 'pi pi-fw pi-user', to: '/app/Store' },
-                { label: 'Schedule', icon: 'pi pi-fw pi-user', to: '/app/Schedule' },
-                { label: 'Planner', icon: 'pi pi-fw pi-user', to: '/app/Planner' },
+                { label: 'Schedule', icon: 'pi pi-fw pi-calendar', to: '/app/Schedule' },
+                { label: 'Planner', icon: 'pi pi-fw pi-calendar-minus', to: '/app/Planner' },
             ]
         },
     ];
