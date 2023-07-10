@@ -58,10 +58,12 @@ const Schedule = () => {
         {CustomerName: "Minda Corporation", PartNumber: "Grommet",LineNumber :"40000",Zone:"Zone -2",Particular:"Target",Jan01:"200",Jan02:"200",Jan03:"200",Jan04:"200",Jan05:"200",Jan06:"200",Jan07:"200",Jan08:"200" },
         {CustomerName: "Rane TRW Steering  Systems Ltd", PartNumber: "Grommet",LineNumber :"40000",Zone:"Zone -2" ,Particular:"Target",Jan01:"200",Jan02:"200",Jan03:"200",Jan04:"200",Jan05:"200",Jan06:"200",Jan07:"200",Jan08:"200"},
         {CustomerName: "MAHLEV", PartNumber: "Grommet",LineNumber :"40000",Zone:"Zone -2" ,Particular:"Target",Jan01:"200",Jan02:"200",Jan03:"200",Jan04:"200",Jan05:"200",Jan06:"200",Jan07:"200",Jan08:"200"},
-    ];
-    const iconTemplate = () => (
-        <i className={` pi pi-trash`} style={{ fontSize: '1.5rem', color: 'green' }}></i>
-      );
+       
+      ];
+
+    // const iconTemplate = () => (
+    //     // <i className={` pi pi-trash`} style={{ fontSize: '1.5rem', color: 'green' }}></i>
+    //   );
 
     useEffect(() => {
         setRecords(data);
@@ -81,31 +83,187 @@ const Schedule = () => {
         <div className="grid table-demo">
         <div className="col-12">
                 <div className="card leave_table">
-                    <DataTable className='' value={records}
-                         responsiveLayout="scroll">
-                        <Column field="CustomerName" header="Customer Name" style={{ minWidth: '200px' }}></Column>
-                        <Column field="PartNumber" header="Part Number" style={{ minWidth: '200px' }} ></Column>
-                        <Column field="LineNumber" header="Line Number " style={{ minWidth: '200px' }} ></Column>
-                        <Column field="Zone" header="Zone" style={{ minWidth: '200px' }} ></Column>
-                        <Column field="Particular" header="Particular" style={{ minWidth: '200px' }}></Column>
-                        <Column field="Jan01" header="01 Jan" style={{ minWidth: '200px' }} ></Column>
-                        <Column field="Jan02" header="02 Jan " style={{ minWidth: '200px' }} ></Column>
-                        <Column field="Jan03" header="03 Jan" style={{ minWidth: '200px' }} ></Column>
-                        <Column field="Jan04" header="04 Jan" style={{ minWidth: '200px' }}></Column>
-                        <Column field="Jan05" header="05 Jan" style={{ minWidth: '200px' }} ></Column>
-                        <Column field="Jan06" header="06 Jan " style={{ minWidth: '200px' }} ></Column>
-                        <Column field="Jan07" header="07 Jan" style={{ minWidth: '200px' }} ></Column>
-                        <Column field="Jan08" header="08 Jan" style={{ minWidth: '200px' }} ></Column>
-                    </DataTable>
-                    
-                </div>
+                <div className="sch_content">
+                <table className="sch_table">
+                <tr>
+                        <th>Customer Name </th>
+                        <th>Part Number </th>
+                        <th>Line Number </th>
+                        <th>Zone </th>
+                        <th>Particular </th>
+                        <th> 01Jan </th>
+                        <th> 02 Jan  </th>
+                        <th> 03 Jan  </th>
+                        <th> 04 Jan  </th>
+                        <th> 05 Jan  </th>
+                        <th> 06 Jan  </th>
+                        <th> 07 Jan  </th>
+                        <th> 08 Jan  </th>
                 
-        
-            </div>
-        </div>
-      
-      
-    </div>
+                      </tr>
+                      <tr>
+    <td>Sanden Vikas</td>
+    <td >6325598625</td>
+    <td>553325698</td>
+    <td rowspan="3" >Zone-1</td>
+    <td className="sch_part1">Target</td>
+<td>350</td>
+<td>400</td>
+<td>350</td>
+<td>450</td>
+<td>450</td>
+<td>550</td>
+<td>650</td>
+
+<td>250</td>
+<td>350</td>
+  </tr>               
+<tr>
+  <td></td>
+    <td></td>
+    <td></td>
+<td className="sch_part2">Avalabilty</td>
+<td>300</td>
+<td>350</td>
+   </tr>
+   <tr>
+  <td></td>
+   <td></td>
+   <td></td>
+<td className="sch_part3">Achiecved</td>
+  </tr>
+  <tr>
+    <td>Sanden Vikas</td>
+    <td >6325598625</td>
+    <td>553325698</td>
+    <td rowspan="3" >Zone-1</td>
+    <td className="sch_part1">Target</td>
+<td>350</td>
+<td>400</td>
+  </tr>               
+<tr>
+  <td></td>
+    <td></td>
+    <td></td>
+<td className="sch_part2">Avalabilty</td>
+<td>300</td>
+<td>350</td>
+   </tr>
+   <tr>
+  <td></td>
+   <td></td>
+   <td></td>
+<td className="sch_part3">Achiecved</td>
+<td>350</td>
+<td>450</td>
+  </tr>
+  <tr>
+    <td>Tata Ficosa</td>
+    <td >6325598625</td>
+    <td>553325698</td>
+    <td rowspan="3" >Zone-1</td>
+    <td className="sch_part1">Target</td>
+<td>350</td>
+<td>400</td>
+<td>350</td>
+  </tr>               
+<tr>
+  <td></td>
+    <td></td>
+    <td></td>
+<td className="sch_part2">Avalabilty</td>
+<td>300</td>
+   </tr>
+   <tr>
+  <td></td>
+   <td></td>
+   <td></td>
+<td className="sch_part3">Achiecved</td>
+  </tr>
+  <tr>
+    <td>AUTOLIV INDIA PVT LTD</td>
+    <td >6325598625</td>
+    <td>553325698</td>
+    <td rowspan="3" >Zone-1</td>
+    <td className="sch_part1">Target</td>
+<td>350</td>
+<td>400</td>
+<td>250</td>
+<td>400</td>
+  </tr>               
+<tr>
+  <td></td>
+    <td></td>
+    <td></td>
+<td className="sch_part2">Avalabilty</td>
+<td>300</td>
+<td>400</td>
+   </tr>
+   <tr>
+  <td></td>
+   <td></td>
+   <td></td>
+<td className="sch_part3">Achiecved</td>
+  </tr>
+  <tr>
+    <td>Minda Corporation</td>
+    <td >6325598625</td>
+    <td>553325698</td>
+    <td rowspan="3" >Zone-1</td>
+    <td className="sch_part1">Target</td>
+<td>350</td>
+<td>400</td>
+<td>250</td>
+  </tr>               
+<tr>
+  <td></td>
+    <td></td>
+    <td></td>
+<td className="sch_part2">Avalabilty</td>
+<td>300</td>
+<td>250</td>
+<td>400</td>
+   </tr>
+   <tr>
+  <td></td>
+   <td></td>
+   <td></td>
+<td className="sch_part3">Achiecved</td>
+  </tr>
+  <tr>
+    <td>Rane TRW Steering  Systems Ltd</td>
+    <td >6325598625</td>
+    <td>553325698</td>
+    <td rowspan="3" >Zone-1</td>
+    <td className="sch_part1">Target</td>
+<td>350</td>
+<td>400</td>
+<td>250</td>
+  </tr>               
+<tr>
+  <td></td>
+    <td></td>
+    <td></td>
+<td className="sch_part2">Avalabilty</td>
+<td>300</td>
+<td>250</td>
+<td>350</td>
+   </tr>
+   <tr>
+  <td></td>
+   <td></td>
+   <td></td>
+<td className="sch_part3">Achiecved</td>
+<td>400</td>
+<td>250</td>
+<td>350</td>
+  </tr>
+</table>    
+</div>              
+</div>
+</div>
+</div>
+</div>
   )
 }
 export default Schedule

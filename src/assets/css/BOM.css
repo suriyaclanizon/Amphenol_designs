@@ -89,6 +89,34 @@ font-size: 1rem;
 transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
 border-radius: 6px;
 }
+.table, th {
+ height: 40px;
+ background-color: #e8eef2;
+} 
+.table, th,tr,td {
+  border: 1px solid #f0f4f7;
+}
+
+.sch_table {
+  width: 100%;
+  text-align: left;
+  color: black;
+  border-collapse:collapse ;
+  font-size: 14px;
+}
+.sch_part1{
+color: #006aad;
+}
+.sch_part2{
+  color:#fa0505;
+}
+.sch_part3{
+  color:#0e8a03;
+}
+.sch_content {
+  overflow: auto;
+  max-height: 300px;
+}
 
 .col-dialog{
 display: flex;
