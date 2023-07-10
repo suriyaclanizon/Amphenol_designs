@@ -125,6 +125,13 @@ const Schedule = () => {
 <td className="sch_part2">Avalabilty</td>
 <td>300</td>
 <td>350</td>
+<td>450</td>
+<td>350</td>
+<td>350</td>
+<td>350</td>
+<td>350</td>
+<td>350</td>
+
    </tr>
    <tr>
   <td></td>
@@ -140,6 +147,12 @@ const Schedule = () => {
     <td className="sch_part1">Target</td>
 <td>350</td>
 <td>400</td>
+<td>350</td>
+<td>350</td>
+<td>350</td>
+<td>350</td>
+<td>350</td>
+
   </tr>               
 <tr>
   <td></td>
@@ -147,6 +160,12 @@ const Schedule = () => {
     <td></td>
 <td className="sch_part2">Avalabilty</td>
 <td>300</td>
+<td>350</td>
+<td>350</td>
+<td>350</td>
+<td>350</td>
+<td>350</td>
+<td>350</td>
 <td>350</td>
    </tr>
    <tr>
@@ -156,6 +175,11 @@ const Schedule = () => {
 <td className="sch_part3">Achiecved</td>
 <td>350</td>
 <td>450</td>
+<td>350</td>
+<td>350</td>
+<td>350</td>
+<td>350</td>
+<td>350</td>
   </tr>
   <tr>
     <td>Tata Ficosa</td>
@@ -166,6 +190,11 @@ const Schedule = () => {
 <td>350</td>
 <td>400</td>
 <td>350</td>
+<td>350</td>
+<td>350</td><td>350</td>
+<td>350</td>
+<td>350</td>
+<td>450</td>
   </tr>               
 <tr>
   <td></td>
@@ -173,6 +202,14 @@ const Schedule = () => {
     <td></td>
 <td className="sch_part2">Avalabilty</td>
 <td>300</td>
+<td>350</td>
+<td>450</td>
+<td>350</td>
+<td>350</td>
+<td>350</td>
+<td>350</td>
+<td>350</td>
+<td>450</td>
    </tr>
    <tr>
   <td></td>
@@ -190,6 +227,11 @@ const Schedule = () => {
 <td>400</td>
 <td>250</td>
 <td>400</td>
+<td>350</td>
+<td>450</td>
+<td>450</td>
+<td>350</td>
+<td>450</td>
   </tr>               
 <tr>
   <td></td>
@@ -198,66 +240,29 @@ const Schedule = () => {
 <td className="sch_part2">Avalabilty</td>
 <td>300</td>
 <td>400</td>
+<td>350</td>
+<td>350</td>
+<td>350</td>
+<td>350</td>
+<td>450</td>
+<td>450</td>
+<td>450</td>
    </tr>
    <tr>
   <td></td>
    <td></td>
    <td></td>
 <td className="sch_part3">Achiecved</td>
-  </tr>
-  <tr>
-    <td>Minda Corporation</td>
-    <td >6325598625</td>
-    <td>553325698</td>
-    <td rowspan="3" >Zone-1</td>
-    <td className="sch_part1">Target</td>
 <td>350</td>
-<td>400</td>
-<td>250</td>
-  </tr>               
-<tr>
-  <td></td>
-    <td></td>
-    <td></td>
-<td className="sch_part2">Avalabilty</td>
-<td>300</td>
-<td>250</td>
-<td>400</td>
-   </tr>
-   <tr>
-  <td></td>
-   <td></td>
-   <td></td>
-<td className="sch_part3">Achiecved</td>
-  </tr>
-  <tr>
-    <td>Rane TRW Steering  Systems Ltd</td>
-    <td >6325598625</td>
-    <td>553325698</td>
-    <td rowspan="3" >Zone-1</td>
-    <td className="sch_part1">Target</td>
+<td>450</td>
 <td>350</td>
-<td>400</td>
-<td>250</td>
-  </tr>               
-<tr>
-  <td></td>
-    <td></td>
-    <td></td>
-<td className="sch_part2">Avalabilty</td>
-<td>300</td>
-<td>250</td>
 <td>350</td>
-   </tr>
-   <tr>
-  <td></td>
-   <td></td>
-   <td></td>
-<td className="sch_part3">Achiecved</td>
-<td>400</td>
-<td>250</td>
+<td>350</td>
+<td>350</td>
 <td>350</td>
   </tr>
+  
+  
 </table>    
 </div>              
 </div>
