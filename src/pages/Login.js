@@ -46,7 +46,7 @@ const Login = () => {
         <div className="top flex align-items-center">
                 <div className="top_left">
                     <img src={amphe} alt="logo" className="logo pt-5 mt-4" />
-                    <h1>Production Monitoring System</h1>
+                    <h1 className="heading1">Production Monitoring System</h1>
                 </div>
                 <div className="top_right">
                      <div className="form-wrapper lg:w-8 " >
@@ -54,7 +54,7 @@ const Login = () => {
                         <h4 className="l-heading">Welcome</h4>
                 <div>
                     <div className="field">
-                        <label htmlFor="email" className="block text-900 font-medium mb-2">Mobile Number</label>
+                        <label htmlFor="email" className="block text-900  mb-2">Mobile Number</label>
                         <InputText id="email" type="text" className="w-full mb-3"
                             defaultValue={""}
                             {...register("userEmail", {
@@ -65,7 +65,7 @@ const Login = () => {
                     </div>
 
                     <div className="field">
-                        <label htmlFor="password" className="block text-900 font-medium mb-2">Password</label>
+                        <label htmlFor="password" className="block text-900  mb-2">Password</label>
                         <div className="relative">
                             <InputText id="password" type={showPassword ? "text" : "password"} className="w-full mb-3"
                                 defaultValue={""}
@@ -86,7 +86,7 @@ const Login = () => {
                     </div>
                     {/* <div className="l-forget-text text-right mb-3">Forget Password?</div> */}
                     <div className="mt-4">
-                        <Button label="LOGIN" className="w-full" />
+                        <Button label="LOGIN" className="w-full login_button" />
                     </div>
                 </div>
             </form>

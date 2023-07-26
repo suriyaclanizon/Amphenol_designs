@@ -12,6 +12,7 @@ import { Toast } from 'primereact/toast';
 
 const BOM_Dialog = () => {
     const [visible, setVisible] = useState(false);
+    
     const options = [
         { value: 'option1', label: 'Option 1' },
         { value: 'option2', label: 'Option 2' },
@@ -21,27 +22,30 @@ const BOM_Dialog = () => {
       const handleOptionChange = (selectedOption) => {
         console.log('Selected Option:', selectedOption);
       };
-      const toast = useRef(null);
+      const toast = useRef(null);var modal = document.getElementById("myModal");
 
-      const accept = () => {
-          toast.current.show({ severity: 'info', summary: 'Confirmed', detail: 'You have accepted', life: 3000 });
-      }
   
-      const reject = () => {
-          toast.current.show({ severity: 'warn', summary: 'Rejected', detail: 'You have rejected', life: 3000 });
-      }
+    
+    const [modalVisible, setModalVisible] = useState(false);
+
+    const openModal = () => {
+      setModalVisible(true);
+    };
   
-      const confirm = (position) => {
-          confirmDialog({
-              message: 'Are you sure edit this field?',
-              
-              position,
-              accept,
-              reject,
-              
-              className: 'custom-confirm-dialog'
-          });
-        };
+    const closeModal = () => {
+      setModalVisible(false);
+    };
+  
+    const handleOutsideClick = (event) => {
+      if (event.target === modalRef.current) {
+        closeModal();
+      }
+    };
+  
+    const modalRef = React.createRef();    
+    
+
+
     
     return (
         <div>
@@ -84,10 +88,26 @@ const BOM_Dialog = () => {
         
     
     <div className="dialog-btn">
-        <Button label="Save"  onClick={() => confirm('top')} className="save_dialog_btn mr-4" style={{ minWidth: '3rem' }} />
-        {/* <button className="cancel_dialog_btn" type="submit">
-            Cancel
-        </button> */}
+    <button onClick={openModal} className="save_dialog_btn " style={{ minWidth: '3rem' }}>Save</button>
+
+
+{modalVisible && (
+  <div className="modal" ref={modalRef}>
+    <div className="modal-content">
+    
+      <span className="close" onClick={closeModal}>
+        &times;
+      </span>
+      <p className="Dialog_para">Are you sure edit this field?</p>
+      <div className="Dia_btn">
+    <button className="Btn1">Yes</button>
+    <button className="Btn1">No</button>
+  </div>
+    </div>
+  </div>
+)}
+
+   
     </div>
 </Dialog>
                 </div>

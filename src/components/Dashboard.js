@@ -12,49 +12,11 @@ import constants from '../constants/constants';
 
 const Dashboard = () => {
     const [isLoading, setIsLoading] = useState(false);
-    const setTraineesList = useStoreActions((actions) => actions.tabModel.setTraineesList);
-    const traineesList = useStoreState((state) => state.tabModel.traineesList);
-    const setGameScoreStatus = useStoreActions((actions) => actions.tabModel.setGameScoreStatus);
-    const gameScoreStatus = useStoreState((state) => state.tabModel.gameScoreStatus);
+    
+    
 
-    useEffect(() => {
-        setIsLoading(true);
-        axios
-            .get(constants.URL.ALL_TRAINEES_LIST)
-            .then((resp) => {
-                setTraineesList(resp.data.results);
-            })
-            .catch((e) => console.error(e))
-            .finally(() => {
-                setIsLoading(false);
-            });
-    }, []);
-
-    useEffect(() => {
-        setIsLoading(true);
-        axios
-            .get(constants.URL.Trainee_Game_Status)
-            .then((resp) => {
-                setGameScoreStatus(resp.data.results);
-            })
-            .catch((e) => console.error(e))
-            .finally(() => {
-                setIsLoading(false);
-            });
-    }, []);
-
-    const uniqueEmployees = {};
-
-    gameScoreStatus?.forEach((employee) => {
-        const { user_id, level, status } = employee;
-        const empId = user_id?.employee_ID;
-
-        if (level == "Level 6" && status == "Pass") {
-            uniqueEmployees[empId] = employee;
-        }
-    });
-    const filteredEmployeeRecords = Object.values(uniqueEmployees);
-    console.log(filteredEmployeeRecords?.length);
+    
+    
 
     return (
         <>

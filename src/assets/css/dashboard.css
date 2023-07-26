@@ -23,6 +23,14 @@
 .head2{
     font-size: 50px;
 }
+.login_button{
+    font-size: 14px;
+    font-weight: 600 !important;
+}
+.text-900{
+    font-size: 14px;
+    font-weight: 600 !important;
+}
 
 .card-content h1{
     font-family: Poppins-Medium;
@@ -311,6 +319,10 @@
     color: #006bae;
     margin-bottom: 18px;
     text-align: center;
+  }
+  .heading1 {
+    font-size: 28px;
+    font-weight: bold;
   }
   .l-forget-text {
     font-family: Poppins-Medium;
