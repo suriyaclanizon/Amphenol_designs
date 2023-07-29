@@ -1,7 +1,5 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React from "react";
 import { TabMenu } from 'primereact/tabmenu';
-import { Route, useHistory } from "react-router-dom";
 import Store from "./Store";
 import WTP from "./WTP";
 import Inward from "./Inward";
@@ -9,7 +7,6 @@ import { useStoreActions, useStoreState } from "easy-peasy";
 import { Button } from "primereact/button";
 
 const Master = () => { 
-    const history = useHistory();
     const setActiveIndex = useStoreActions((actions) => actions.tabModel.setActiveIndex);
     const activeIndex = useStoreState((actions) => actions.tabModel.activeIndex);
 
