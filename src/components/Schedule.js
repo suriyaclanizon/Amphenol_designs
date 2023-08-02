@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Calendar } from 'primereact/calendar';
+import { Button } from 'primereact/button';
+import { Dropdown } from 'primereact/dropdown';
+import { InputText } from "primereact/inputtext";
 
 const CalendarTable = () => {
   const [tableHeader, setTableHeader] = useState([]);
@@ -30,37 +33,78 @@ const CalendarTable = () => {
   }, []);
 
   const formatDate = (date) => {
-    const day = date.getDate().toString().padStart(2, '0');
-    const month = date.toLocaleString('default', { month: 'short' });
+    const day = date?.getDate().toString().padStart(2, '0');
+    const month = date?.toLocaleString('default', { month: 'short' });
     return `${day} ${month}`;
   };
 
   return (
-    <div>
-      <Calendar value={todayDate} onChange={(e) => setTodayDate(e.value)} />
+    <div style={{ height: "calc(100vh - 15rem)" }}>
+      <div className="card p-fluid p-2 px-4">
+        <div className="flex justify-content-between align-items-center">
+          <h4 className='mb-0 font-bold'>Schedule</h4>
+          <div className="my-1 flex">
+            <Calendar value={todayDate} onChange={(e) => setTodayDate(e.value)} style={{width: "100px"}} dateFormat="MM-yy" />
+            <div>
+            <Button className="btn1" label="Upload" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className='card w-full overflow-auto h-full'>
       <table>
         <thead>
           <tr>
-            <th>name</th>
-            <th>number</th>
-            <th>target</th>
-            {tableHeader.map((date) => (
-              <th key={date.getDate()} className={todayDate.getDate() === date.getDate() ? 'today' : ''}>
+            <th style={{minWidth: "102px"}}>Customer Name</th>
+            <th style={{minWidth: "102px"}}>Part Number</th>
+            <th style={{minWidth: "102px"}}>Target</th>
+            <th style={{minWidth: "102px"}}>%Achieved</th>
+            {tableHeader?.map((date) => (
+              <th key={date?.getDate()} className="bg-odd">
                 {formatDate(date)}
-                <th>zone</th>
-                <th>line</th>
-                <th>stock</th>
-                <th>target</th>
-                <th>acheived</th>
+                <th style={{minWidth: "102px"}}>Zone</th>
+                <th style={{minWidth: "102px"}}>Line</th>
+                <th style={{minWidth: "50px"}}>Stock</th>
+                <th style={{minWidth: "102px"}}>Target</th>
+                <th style={{minWidth: "50px"}}>Acheived</th>
               </th>
             ))}
           </tr>
         </thead>
         <tbody>
-          {/* Add table rows for your calendar data here */}
-          {/* Each row should have data for each date in the month */}
+          <tr>
+            <td style={{minWidth: "102px"}}>Sanden Vikas</td>
+            <td style={{minWidth: "102px"}}>2884-0850V</td>
+            <td style={{minWidth: "102px"}}>800</td>
+            <td style={{minWidth: "102px"}}></td>
+            {tableHeader?.map((date) => (
+              <td key={date?.getDate()} className={todayDate?.getDate() === date?.getDate() ? 'today' : ''}>
+                <td style={{width: "100px"}}><Dropdown  style={{width: "100px"}} /></td>
+                <td style={{width: "100px"}}><Dropdown  style={{width: "100px"}} /></td>
+                <td style={{width: "50px"}}>100</td>
+                <td style={{width: "100px"}}><InputText  style={{width: "100px"}} /></td>
+                <td style={{width: "50px"}}>100</td>
+              </td>
+            ))}
+          </tr>
+          <tr>
+            <td style={{minWidth: "102px"}}>Sanden Vikas</td>
+            <td style={{minWidth: "102px"}}>VAC32-10340</td>
+            <td style={{minWidth: "102px"}}>1200</td>
+            <td style={{minWidth: "102px"}}></td>
+            {tableHeader?.map((date) => (
+              <td key={date?.getDate()} className={todayDate?.getDate() === date?.getDate() ? 'today' : ''}>
+                <td style={{width: "100px"}}><Dropdown  style={{width: "100px"}} /></td>
+                <td style={{width: "100px"}}><Dropdown  style={{width: "100px"}} /></td>
+                <td style={{width: "50px"}}>100</td>
+                <td style={{width: "100px"}}><InputText  style={{width: "100px"}} /></td>
+                <td style={{width: "50px"}}>100</td>
+              </td>
+            ))}
+          </tr>
         </tbody>
       </table>
+      </div>
     </div>
   );
 };

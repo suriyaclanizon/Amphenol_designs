@@ -2,7 +2,6 @@ import React from 'react';
 import dash1 from "../images/dash1.png"
 import dash2 from "../images/dash2.png"
 import dash3 from "../images/dash3.png"
-import "../assets/css/dashboard.css"
 
 const Dashboard = () => {
     return (
@@ -11,7 +10,7 @@ const Dashboard = () => {
                 <h4 className='mb-0 font-bold'>Dashboard</h4>
             </div>
             <div className="grid">
-                <div className="col-12 md:col-6 lg:col-4 xl:col-3">
+                <div className="col-12 md:col-6 lg:col-4">
                     <div className='bg-white ds-border'>
                         <div className='relative'>
                             <img src={dash1} className='w-full' />
@@ -73,7 +72,7 @@ const Dashboard = () => {
                     </div>
                 </div>
 
-                <div className="col-12 md:col-6 lg:col-4 xl:col-3">
+                <div className="col-12 md:col-6 lg:col-4">
                     <div className='bg-white ds-border'>
                         <div className='relative'>
                             <img src={dash2} className='w-full' />
@@ -135,7 +134,7 @@ const Dashboard = () => {
                     </div>
                 </div>
 
-                <div className="col-12 md:col-6 lg:col-4 xl:col-3">
+                <div className="col-12 md:col-6 lg:col-4">
                     <div className='bg-white ds-border'>
                         <div className='relative'>
                             <img src={dash3} className='w-full' />

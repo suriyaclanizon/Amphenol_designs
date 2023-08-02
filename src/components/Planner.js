@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
-import { useStoreActions, useStoreState } from 'easy-peasy';
 import "../assets/css/BOM.css"
 import { Button } from "primereact/button";
 import { Calendar } from 'primereact/calendar';
