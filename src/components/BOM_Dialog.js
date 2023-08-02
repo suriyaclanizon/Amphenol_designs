@@ -51,7 +51,7 @@ const BOM_Dialog = () => {
         <div className="flex justify-content-between align-items-center">
           <h4 className='mb-0 font-bold'>BOM Master</h4>
           <div className="my-1">
-            <Button className="btn1" label="Edit" onClick={() => setVisible(true)} />
+            <Button className="btn" label="Edit" onClick={() => setVisible(true)} />
           </div>
         </div>
       </div>

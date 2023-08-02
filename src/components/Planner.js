@@ -41,11 +41,13 @@ const Planner = () => {
     return (
         <div>
             <div className="card p-fluid">
-                <div className="title1 mt-2 flex justify-content-between">
-                    <h3 className="leave_title pt-2">Add Plan</h3>
+                <div className="title1 flex justify-content-between">
+                    <h3 className="pt-2">Add Plan</h3>
                     <div className="flex">
-                        <Button className="Upbtn" label="Upload" onClick={() => setVisible(true)} />
-                        <Button className="btn" label="Edit" onClick={() => setVisible(true)} />
+                        <div>
+                        <Button className="btn" label="Upload" onClick={() => setVisible(true)} />
+                        </div>
+                        <Button className="btn ml-3" label="Edit" onClick={() => setVisible(true)} />
                     </div>
                 </div>
             </div>
