@@ -5,7 +5,7 @@ const BASE_URL = API_URL + "api/";
 const constants = {
     URL: {
         SIGNIN: BASE_URL + "signIn",
-        ALL_TRAINEES_LIST: BASE_URL + "trainees",
+        BOM_MASTER: BASE_URL + "bomMaster",
         Trainee_Game_Status: BASE_URL + "traineeGameScore",
     }
 }

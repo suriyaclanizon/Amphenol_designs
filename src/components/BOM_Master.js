@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
+import constants from '../constants/constants';
+import axios from 'axios';
 
 const BOM_Master = () => {
+    const [isLoading, setIsLoading] = useState(false);
     const [records, setRecords] = useState();
 
     const data = [
@@ -13,9 +16,18 @@ const BOM_Master = () => {
         {PartNumber: "27-71-366-1-0", Citemno: "ACPLS00005",ItemDescription: "Interface cap" ,Quantity:"1"},
         {PartNumber: "27-71-366-1-0", Citemno: "7-1452665-1-AS",ItemDescription: "MCON 1.2 LL REC SWS SN" ,Quantity:"1"},    
     ];
-
+    
     useEffect(() => {
-        setRecords(data);
+        setIsLoading(true);
+        axios
+            .get(constants.URL.BOM_MASTER)
+            .then((resp) => {
+                setRecords(resp.data.results);
+            })
+            .catch((e) => console.error(e))
+            .finally(() => {
+                setIsLoading(false);
+            });
     }, []);
 
     return (
@@ -23,10 +35,10 @@ const BOM_Master = () => {
         <div className="card w-full">
             <div className="BOM-card">
             <DataTable value={records} >
-                <Column field="PartNumber" header="Part Number"></Column>
-                <Column field="Citemno" header="Citemno" ></Column>
-                <Column field="ItemDescription" header="Item Description" ></Column>
-                <Column field="Quantity" header="Quantity Par Per" ></Column>
+                <Column field="part_number" header="Part Number"></Column>
+                <Column field="citemno" header="Citemno" ></Column>
+                <Column field="item_description" header="Item Description" ></Column>
+                <Column field="qty_par_per" header="Quantity Par Per" ></Column>
             </DataTable>
             </div>
         </div>
