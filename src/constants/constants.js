@@ -6,7 +6,7 @@ const constants = {
     URL: {
         SIGNIN: BASE_URL + "signIn",
         BOM_MASTER: BASE_URL + "bomMaster",
-        Trainee_Game_Status: BASE_URL + "traineeGameScore",
+        STORE: BASE_URL + "store",
     }
 }
 export default constants
