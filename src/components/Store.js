@@ -21,7 +21,13 @@ const Store = () => {
         axios
             .get(constants.URL.STORE)
             .then((resp) => {
-                setRecords(resp.data.results);
+                const uniqueDescription = [];
+                resp?.data?.results?.map((item) => {
+                    var findItem = uniqueDescription.find((x) => x.description === item.description);
+                    if (!findItem) uniqueDescription.push(item);
+                });
+                console.log(uniqueDescription);
+                setRecords(uniqueDescription);
             })
             .catch((e) => console.error(e))
             .finally(() => {

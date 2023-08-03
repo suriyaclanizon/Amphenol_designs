@@ -10,19 +10,31 @@ import { Dialog } from "primereact/dialog";
 import "../assets/css/BOM.css"
 
 const WTP = () => {
+    const [isLoading, setIsLoading] = useState(false);
     const [records, setRecords] = useState();
 
-    const data = [
-        
+    const data = [    
         {PartNumber: "656159400A", Description: "Cable", Quantity: "10000"},
-        {PartNumber: "31020311X017", Description: "Grommet",Quantity: "20000" },
-        
-        
+        {PartNumber: "31020311X017", Description: "Grommet",Quantity: "20000" },  
     ];
 
     useEffect(() => {
-        setRecords(data);
+        setIsLoading(true);
+        axios
+            .get(constants.URL.STORE)
+            .then((resp) => {
+                var data = resp?.data?.results?.filter((item)=>{
+                    return item?.wip_quantity
+                })
+                console.log(data);
+                setRecords(data);
+            })
+            .catch((e) => console.error(e))
+            .finally(() => {
+                setIsLoading(false);
+            });
     }, []);
+
   return (
     <div>
         <div className="grid table-demo">
@@ -30,9 +42,9 @@ const WTP = () => {
                 <div className="card leave_table">
                     <DataTable className='' value={records}
                          responsiveLayout="scroll">
-                        <Column field="PartNumber" header="Part Number" style={{ minWidth: '200px' }}></Column>
-                        <Column field="Description" header="Citemno" style={{ minWidth: '200px' }} ></Column>
-                        <Column field="Quantity" header="Quantity" style={{ minWidth: '200px' }} ></Column>
+                        <Column field="part_number" header="Part Number" style={{ minWidth: '200px' }}></Column>
+                        <Column field="description" header="Citemno" style={{ minWidth: '200px' }} ></Column>
+                        <Column field="wip_quantity" header="Quantity" style={{ minWidth: '200px' }} ></Column>
                         
                     </DataTable>
                 </div>
