@@ -30,73 +30,82 @@ const Login = () => {
 
     const onSubmit = (data) => {
         const payload = {
-            user_name: data.userEmail,
+            mobile_number: data.mobile_number,
             password: data.password
         }
-        goto("/app/defaultnav")
         setIsLoading(true);
-        
+        axios.post(constants.URL.SIGNIN, payload)
+            .then((resp) => {
+                // console.log(resp.data.results);
+                goto("/app/defaultnav")
+            }).catch((e) => {
+                toast.current.show({ severity: "error", summary: "Failure", detail: e?.response?.data?.message });
+                console.error(e);
+            }).finally(() => {
+                setIsLoading(false);
+            })
+
     }
     const goto = (to) => {
         history.replace(to);
     }
-    
+
     return (
-       <div className="container">
-        <div className="top flex align-items-center">
+        <div className="container">
+            <Toast ref={toast} />
+            <div className="top flex align-items-center">
                 <div className="top_left">
                     <img src={amphe} alt="logo" className="logo pt-5 mt-4" />
                     <h1 className="heading1">Production Monitoring System</h1>
                 </div>
                 <div className="top_right">
-                     <div className="form-wrapper lg:w-8 " >
+                    <div className="form-wrapper lg:w-8 " >
                         <form onSubmit={handleSubmit(onSubmit)} className="error_msg">
-                        <h4 className="l-heading">Welcome</h4>
-                <div>
-                    <div className="field">
-                        <label htmlFor="email" className="block text-900  mb-2">Mobile Number</label>
-                        <InputText id="email" type="text" className="w-full mb-3"
-                            defaultValue={""}
-                            {...register("userEmail", {
-                                required: true,
-                            })}
-                        />
-                        {errors?.userEmail?.type === "required" && <p className="p-error">This field is required</p>}
-                    </div>
+                            <h4 className="l-heading">Welcome</h4>
+                            <div>
+                                <div className="field">
+                                    <label htmlFor="mobile_number" className="block text-900  mb-2">Mobile Number</label>
+                                    <InputText id="mobile_number" type="text" className="w-full mb-3"
+                                        defaultValue={""}
+                                        {...register("mobile_number", {
+                                            required: true,
+                                        })}
+                                    />
+                                    {errors?.mobile_number?.type === "required" && <p className="p-error">This field is required</p>}
+                                </div>
 
-                    <div className="field">
-                        <label htmlFor="password" className="block text-900  mb-2">Password</label>
-                        <div className="relative">
-                            <InputText id="password" type={showPassword ? "text" : "password"} className="w-full mb-3"
-                                defaultValue={""}
-                                {...register("password", {
-                                    required: true
-                                })}
-                            />
-                            <span className="absolute eye-icon-position cursor-pointer" onClick={togglePasswordVisibility}>
-                                {showPassword ? (
-                                    <i className="pi pi-eye-slash" style={{ color: '#708090', fontSize: "16px" }}></i>
-                                ) : (
-                                    <i className="pi pi-eye" style={{ color: '#708090', fontSize: "16px" }}></i>
-                                )}
-                            </span>
-                        </div>
+                                <div className="field">
+                                    <label htmlFor="password" className="block text-900  mb-2">Password</label>
+                                    <div className="relative">
+                                        <InputText id="password" type={showPassword ? "text" : "password"} className="w-full mb-3"
+                                            defaultValue={""}
+                                            {...register("password", {
+                                                required: true
+                                            })}
+                                        />
+                                        <span className="absolute eye-icon-position cursor-pointer" onClick={togglePasswordVisibility}>
+                                            {showPassword ? (
+                                                <i className="pi pi-eye-slash" style={{ color: '#708090', fontSize: "16px" }}></i>
+                                            ) : (
+                                                <i className="pi pi-eye" style={{ color: '#708090', fontSize: "16px" }}></i>
+                                            )}
+                                        </span>
+                                    </div>
 
-                        {errors?.password?.type === "required" && <p className="p-error">This field is required</p>}
-                    </div>
-                    {/* <div className="l-forget-text text-right mb-3">Forget Password?</div> */}
-                    <div className="mt-4">
-                        <Button label="LOGIN" className="w-full login_button" />
+                                    {errors?.password?.type === "required" && <p className="p-error">This field is required</p>}
+                                </div>
+                                <div className="mt-4">
+                                    <Button label="LOGIN" className="w-full login_button" />
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
-            </form>
             </div>
-</div>
+            <div className="bottom flex justify-content-center">
+                <img src={banner} alt="car-img" className="car" />
+            </div>
         </div>
-        <div className="bottom flex justify-content-center">
-        <img src={banner} alt="car-img" className="car" />
-        </div>
-       </div>
     );
 };
 

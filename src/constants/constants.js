@@ -1,5 +1,4 @@
-// const API_URL = " http://dev-clanizon.cloud:4001/";
-const API_URL = "http://3.110.51.237:4001/"
+const API_URL = "http://3.109.210.138:6001/"
 
 const BASE_URL = API_URL + "api/";
 
