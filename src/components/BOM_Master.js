@@ -29,8 +29,8 @@ const BOM_Master = () => {
 
     const handleUpdate = () =>{
         const payload = {
-            part_number: partNo,
-            qty_par_per: quantity
+            part_number: partNo || selectedRow?.part_number,
+            qty_par_per: quantity || selectedRow?.qty_par_per
         }
         setIsLoading(true);
         axios.patch(constants.URL.BOM_MASTER+"/"+selectedRow?._id, payload)
@@ -44,6 +44,7 @@ const BOM_Master = () => {
                 console.error(e);
             }).finally(() => {
                 setIsLoading(false);
+                setVisible(false)
                 setSelectedRow(null)
             })
     }
