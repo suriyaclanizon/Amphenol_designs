@@ -396,3 +396,7 @@ th{
 .bg-odd:nth-child(odd), .bg-odd:nth-child(odd) th{
     background: #f0f4f7;
 }
+
+.p-toast-icon-close{
+    display: none;
+}

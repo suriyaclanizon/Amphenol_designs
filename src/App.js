@@ -28,7 +28,6 @@ import TreeDemo from './components/TreeDemo';
 import InvalidStateDemo from './components/InvalidStateDemo';
 import BlocksDemo from './components/BlocksDemo';
 import IconsDemo from './components/IconsDemo';
-import BOM_Dialog from './components/BOM_Dialog';
 
 import Planner from './components/Planner';
 import Schedule from './components/Schedule';
@@ -50,6 +49,7 @@ import './App.scss';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Master from './components/Master';
+import BOM_Master from './components/BOM_Master';
 
 const App = () => {
     const [layoutMode, setLayoutMode] = useState('static');
@@ -180,7 +180,7 @@ const App = () => {
             label: "",
             items: [
                 { label: 'Dashboard', icon: 'pi pi-fw pi-home', to: '/app/defaultnav' },
-                { label: 'BOM Master', icon: 'pi pi-fw pi-file', to: '/app/BOM_Dialog' },
+                { label: 'BOM Master', icon: 'pi pi-fw pi-file', to: '/app/BOM' },
                 { label: 'Store', icon: 'pi pi-fw pi-user', to: '/app/Store' },
                 { label: 'Schedule', icon: 'pi pi-fw pi-calendar', to: '/app/Schedule' },
                 { label: 'Planner', icon: 'pi pi-fw pi-calendar-minus', to: '/app/Planner' },
@@ -232,7 +232,7 @@ const App = () => {
             <div className="layout-main-container">
                 <div className="layout-main">
                     <Route path="/app/defaultnav" exact render={() => <Dashboard colorMode={layoutColorMode} location={location} />} />
-                    <Route path="/app/BOM_Dialog" component={BOM_Dialog} />
+                    <Route path="/app/BOM" component={BOM_Master} />
                     <Route path="/app/Planner" component={Planner} />
                     <Route path="/app/Schedule" component={Schedule} />
                     <Route path="/app/Store" component={Master} />
