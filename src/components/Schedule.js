@@ -13,7 +13,19 @@ const CalendarTable = () => {
 
   useEffect(() => {
     // Get the current date and month
-    const currentDate = new Date(todayDate);
+    const currentDate = new Date();
+    handleDateChange(currentDate)
+  }, []);
+
+  const formatDate = (date) => {
+    const day = date?.getDate().toString().padStart(2, '0');
+    const month = date?.toLocaleString('default', { month: 'short' });
+    return `${day} ${month}`;
+  };
+
+  const handleDateChange = (e) => {
+    console.log(e);
+    const currentDate = new Date(e);
     const currentMonth = currentDate.getMonth();
 
     // Get the first date of the month
@@ -33,13 +45,7 @@ const CalendarTable = () => {
 
     // Set today's date
     setTodayDate(currentDate);
-  }, []);
-
-  const formatDate = (date) => {
-    const day = date?.getDate().toString().padStart(2, '0');
-    const month = date?.toLocaleString('default', { month: 'short' });
-    return `${day} ${month}`;
-  };
+  }
 
   const handlechange = (e,item,index)=>{
     console.log(e.target.value,item,index);
@@ -51,7 +57,7 @@ const CalendarTable = () => {
         <div className="flex justify-content-between align-items-center">
           <h4 className='mb-0 font-bold'>Schedule</h4>
           <div className="my-1 flex">
-            <Calendar value={todayDate} onChange={(e) => setTodayDate(e.value)} style={{width: "100px"}} dateFormat="MM-yy" />
+            <Calendar value={todayDate} onChange={(e) => handleDateChange(e.value)} style={{width: "100px"}} dateFormat="MM-yy" />
             <div>
             <Button className="btn1" label="Upload" />
             </div>
