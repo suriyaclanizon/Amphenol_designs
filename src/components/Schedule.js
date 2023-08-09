@@ -7,6 +7,9 @@ import { InputText } from "primereact/inputtext";
 const CalendarTable = () => {
   const [tableHeader, setTableHeader] = useState([]);
   const [todayDate, setTodayDate] = useState(null);
+  const [shift1, setShift1] = useState(null);
+  const [shift2, setShift2] = useState(null);
+  const [shift3, setShift3] = useState(null);
 
   useEffect(() => {
     // Get the current date and month
@@ -38,6 +41,10 @@ const CalendarTable = () => {
     return `${day} ${month}`;
   };
 
+  const handlechange = (e,item,index)=>{
+    console.log(e.target.value,item,index);
+  }
+
   return (
     <div style={{ height: "calc(100vh - 15rem)" }}>
       <div className="card p-fluid p-2 px-4">
@@ -55,51 +62,35 @@ const CalendarTable = () => {
       <table>
         <thead>
           <tr>
-            <th style={{minWidth: "102px"}}>Customer Name</th>
-            <th style={{minWidth: "102px"}}>Part Number</th>
-            <th style={{minWidth: "102px"}}>Target</th>
-            <th style={{minWidth: "102px"}}>%Achieved</th>
-            {tableHeader?.map((date) => (
-              <th key={date?.getDate()} className="bg-odd">
-                {formatDate(date)}
-                <th style={{minWidth: "102px"}}>Zone</th>
-                <th style={{minWidth: "102px"}}>Line</th>
-                <th style={{minWidth: "50px"}}>Stock</th>
-                <th style={{minWidth: "102px"}}>Target</th>
-                <th style={{minWidth: "50px"}}>Acheived</th>
-              </th>
+            <th>Customer Name</th>
+            <th>Part Number</th>
+            <th>Target</th>
+            <th>%Achieved</th>
+            {tableHeader?.map((date,index) => (
+              <React.Fragment key={date}>
+                <th style={{backgroundColor: index % 2 === 1 ? "white" : "#f0f4f7"}}>Zone</th>
+                <th style={{backgroundColor: index % 2 === 1 ? "white" : "#f0f4f7"}}>Line</th>
+                <th style={{backgroundColor: index % 2 === 1 ? "white" : "#f0f4f7",}} colSpan={3}>Target</th>
+                <th style={{backgroundColor: index % 2 === 1 ? "white" : "#f0f4f7"}}>{formatDate(date)} Acheived</th>
+              </React.Fragment>
             ))}
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td style={{minWidth: "102px"}}>Sanden Vikas</td>
-            <td style={{minWidth: "102px"}}>2884-0850V</td>
-            <td style={{minWidth: "102px"}}>800</td>
-            <td style={{minWidth: "102px"}}></td>
-            {tableHeader?.map((date) => (
-              <td key={date?.getDate()} className={todayDate?.getDate() === date?.getDate() ? 'today' : ''}>
-                <td style={{width: "100px"}}><Dropdown  style={{width: "100px"}} /></td>
-                <td style={{width: "100px"}}><Dropdown  style={{width: "100px"}} /></td>
-                <td style={{width: "50px"}}>100</td>
-                <td style={{width: "100px"}}><InputText  style={{width: "100px"}} /></td>
-                <td style={{width: "50px"}}>100</td>
-              </td>
-            ))}
-          </tr>
-          <tr>
-            <td style={{minWidth: "102px"}}>Sanden Vikas</td>
-            <td style={{minWidth: "102px"}}>VAC32-10340</td>
-            <td style={{minWidth: "102px"}}>1200</td>
-            <td style={{minWidth: "102px"}}></td>
-            {tableHeader?.map((date) => (
-              <td key={date?.getDate()} className={todayDate?.getDate() === date?.getDate() ? 'today' : ''}>
-                <td style={{width: "100px"}}><Dropdown  style={{width: "100px"}} /></td>
-                <td style={{width: "100px"}}><Dropdown  style={{width: "100px"}} /></td>
-                <td style={{width: "50px"}}>100</td>
-                <td style={{width: "100px"}}><InputText  style={{width: "100px"}} /></td>
-                <td style={{width: "50px"}}>100</td>
-              </td>
+            <td>Sanden Vikas</td>
+            <td>2884-0850V</td>
+            <td>800</td>
+            <td></td>
+            {tableHeader?.map((date,index) => (
+              <>
+                <td>zone1</td>
+                <td>line1</td>
+                <td><InputText className="shift-box" placeholder='Shift 1' value={shift1} onChange={(e)=> handlechange(e,date,index)} /></td>
+                <td><InputText className="shift-box" placeholder='Shift 2' value={shift2} onChange={(e)=> handlechange(e,date,index)} /></td>
+                <td><InputText className="shift-box" placeholder='Shift 3' value={shift3} onChange={(e)=> handlechange(e,date,index)} /></td>
+                <td>100</td>
+              </>
             ))}
           </tr>
         </tbody>

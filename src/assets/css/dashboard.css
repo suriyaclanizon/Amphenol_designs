@@ -389,6 +389,7 @@ table, th, td{
     /* width: 90px !important; */
     border-collapse: collapse;
     /* table-layout: fixed; */
+    padding: 10px 5px;
 }
 th{
     background: #fafafa;
@@ -399,4 +400,8 @@ th{
 
 .p-toast-icon-close{
     display: none;
+}
+
+.shift-box{
+    width: 60px;
 }
