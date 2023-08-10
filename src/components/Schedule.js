@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Calendar } from 'primereact/calendar';
 import { Button } from 'primereact/button';
-import { Dropdown } from 'primereact/dropdown';
 import { InputText } from "primereact/inputtext";
 
 const CalendarTable = () => {
@@ -64,20 +63,35 @@ const CalendarTable = () => {
           </div>
         </div>
       </div>
-      <div className='card w-full overflow-auto h-full'>
+      <div className='card w-full overflow-auto h-full p-0'>
       <table>
         <thead>
           <tr>
-            <th>Customer Name</th>
-            <th>Part Number</th>
-            <th>Target</th>
-            <th>%Achieved</th>
+            <th rowSpan={3}>Customer Name</th>
+            <th rowSpan={3}>Part Number</th>
+            <th rowSpan={3}>Target</th>
+            <th rowSpan={3}>% Achieved</th>
+            <th rowSpan={3}>Stock</th>
+            {tableHeader?.map((date,index) => (
+            <th colSpan={6} style={{backgroundColor: index % 2 === 1 ? "#fafafa" : "#f0f4f7"}}>{formatDate(date)}</th>
+            ))}
+            </tr>
+          <tr>
             {tableHeader?.map((date,index) => (
               <React.Fragment key={date}>
-                <th style={{backgroundColor: index % 2 === 1 ? "white" : "#f0f4f7"}}>Zone</th>
-                <th style={{backgroundColor: index % 2 === 1 ? "white" : "#f0f4f7"}}>Line</th>
-                <th style={{backgroundColor: index % 2 === 1 ? "white" : "#f0f4f7",}} colSpan={3}>Target</th>
-                <th style={{backgroundColor: index % 2 === 1 ? "white" : "#f0f4f7"}}>{formatDate(date)} Acheived</th>
+                <th rowSpan={2} style={{backgroundColor: index % 2 === 1 ? "#fafafa" : "#f0f4f7"}}>Zone</th>
+                <th rowSpan={2} style={{backgroundColor: index % 2 === 1 ? "#fafafa" : "#f0f4f7"}}>Line</th>
+                <th colSpan={3} style={{backgroundColor: index % 2 === 1 ? "#fafafa" : "#f0f4f7"}}>Target</th>
+                <th rowSpan={2} style={{backgroundColor: index % 2 === 1 ? "#fafafa" : "#f0f4f7"}}>Acheived</th>
+              </React.Fragment>
+            ))}
+          </tr>
+          <tr>
+            {tableHeader?.map((date,index) => (
+              <React.Fragment key={date}>
+                <th style={{backgroundColor: index % 2 === 1 ? "#fafafa" : "#f0f4f7"}}>Shift 1</th>
+                <th style={{backgroundColor: index % 2 === 1 ? "#fafafa" : "#f0f4f7"}}>Shift 2</th>
+                <th style={{backgroundColor: index % 2 === 1 ? "#fafafa" : "#f0f4f7"}}>Shift 3</th>
               </React.Fragment>
             ))}
           </tr>
@@ -88,6 +102,7 @@ const CalendarTable = () => {
             <td>2884-0850V</td>
             <td>800</td>
             <td></td>
+            <td>100</td>
             {tableHeader?.map((date,index) => (
               <>
                 <td>zone1</td>
