@@ -44,10 +44,11 @@ const Planner = () => {
                 <div className="title1 flex justify-content-between">
                     <h3 className="pt-2">Add Plan</h3>
                     <div className="flex">
-                        <div>
-                        <Button className="btn" label="Upload" onClick={() => setVisible(true)} />
-                        </div>
-                        <Button className="btn ml-3" label="Edit" onClick={() => setVisible(true)} />
+                        
+                    <Button className="btn" label="Upload"  onClick={() => setVisible(true)} />
+                        
+                        <Button className="btn ml-3" label="Add" onClick={() => setVisible(true)} />
+                        
                     </div>
                 </div>
             </div>

@@ -45,12 +45,11 @@ border-radius: 6px;
   width: 30%;
 }
 
-.Btn1{
+.btn{
   border-radius: 10px;
-  border: 1px solid #e59a23;
-  color: #000;
-  font-size: 14px;
-  font-weight: 600;
+ 
+  font-size: 14px !important;
+  font-weight: 600 !important;
   width: 45px;
   height: 30px;
   margin-left: 5px;
