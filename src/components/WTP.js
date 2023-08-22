@@ -21,13 +21,13 @@ const WTP = () => {
     useEffect(() => {
         setIsLoading(true);
         axios
-            .get(constants.URL.STORE)
+            .get(constants.URL.WIP)
             .then((resp) => {
-                var data = resp?.data?.results?.filter((item)=>{
-                    return item?.wip_quantity
-                })
-                console.log(data);
-                setRecords(data);
+                // var data = resp?.data?.results?.filter((item)=>{
+                //     return item?.wip_quantity
+                // })
+                // console.log(resp?.data?.results);
+                setRecords(resp?.data?.results);
             })
             .catch((e) => console.error(e))
             .finally(() => {
@@ -42,8 +42,8 @@ const WTP = () => {
                 <div className="card leave_table">
                     <DataTable className='' value={records}
                          responsiveLayout="scroll">
-                        <Column field="part_number" header="Part Number" style={{ minWidth: '200px' }}></Column>
-                        <Column field="description" header="Citemno" style={{ minWidth: '200px' }} ></Column>
+                        <Column field="citemno_id.part_number" header="Part Number" style={{ minWidth: '200px' }}></Column>
+                        <Column field="store_citemno" header="Citemno" style={{ minWidth: '200px' }} ></Column>
                         <Column field="wip_quantity" header="Quantity" style={{ minWidth: '200px' }} ></Column>
                         
                     </DataTable>

@@ -30,7 +30,7 @@ const Login = () => {
 
     const onSubmit = (data) => {
         const payload = {
-            mobile_number: data.mobile_number,
+            user_name: data.userName,
             password: data.password
         }
         setIsLoading(true);
@@ -64,14 +64,14 @@ const Login = () => {
                             <h4 className="l-heading">Welcome</h4>
                             <div>
                                 <div className="field">
-                                    <label htmlFor="mobile_number" className="block text-900  mb-2">Mobile Number</label>
-                                    <InputText id="mobile_number" type="text" className="w-full mb-3"
+                                    <label htmlFor="userName" className="block text-900  mb-2">User Name</label>
+                                    <InputText id="userName" type="text" className="w-full mb-3"
                                         defaultValue={""}
-                                        {...register("mobile_number", {
+                                        {...register("userName", {
                                             required: true,
                                         })}
                                     />
-                                    {errors?.mobile_number?.type === "required" && <p className="p-error">This field is required</p>}
+                                    {errors?.userName?.type === "required" && <p className="p-error">This field is required</p>}
                                 </div>
 
                                 <div className="field">

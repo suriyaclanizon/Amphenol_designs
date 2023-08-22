@@ -7,6 +7,9 @@ const constants = {
         SIGNIN: BASE_URL + "signIn",
         BOM_MASTER: BASE_URL + "bomMaster",
         STORE: BASE_URL + "store",
+        WIP: BASE_URL + "wip",
+        INWARD: BASE_URL + "inward",
+        PLANNER: BASE_URL + "planner",
     }
 }
 export default constants

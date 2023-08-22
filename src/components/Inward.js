@@ -23,13 +23,13 @@ const Inward = () => {
     useEffect(() => {
         setIsLoading(true);
         axios
-            .get(constants.URL.STORE)
+            .get(constants.URL.INWARD)
             .then((resp) => {
-                var data = resp?.data?.results?.filter((item)=>{
-                    return item.in_ward_quantity
-                })
-                console.log(data);
-                setRecords(data);
+                // var data = resp?.data?.results?.filter((item)=>{
+                //     return item.in_ward_quantity
+                // })
+                // console.log(data);
+                setRecords(resp?.data?.results);
             })
             .catch((e) => console.error(e))
             .finally(() => {
@@ -47,10 +47,10 @@ const Inward = () => {
                 
                     <DataTable className='' value={records}
                          responsiveLayout="scroll">
-                        <Column field="inward_date" header="Inward Date" style={{ minWidth: '200px' }} ></Column>
-                        <Column field="part_number" header="Part Number" style={{ minWidth: '200px' }}></Column>
-                        <Column field="description" header="Description" style={{ minWidth: '200px' }} ></Column>
-                        <Column field="UOM" header="UOM" style={{ minWidth: '200px' }} ></Column>
+                        <Column field="createdAt" header="Inward Date" style={{ minWidth: '200px' }} ></Column>
+                        <Column field="citemno_id.part_number" header="Part Number" style={{ minWidth: '200px' }}></Column>
+                        <Column field="citemno_id.item_description" header="Description" style={{ minWidth: '200px' }} ></Column>
+                        <Column field="citemno_id.UOM" header="UOM" style={{ minWidth: '200px' }} ></Column>
                         <Column field="in_ward_quantity" header="Quantity" style={{ minWidth: '200px' }} ></Column>         
                     </DataTable>
                 </div>

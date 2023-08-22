@@ -21,13 +21,13 @@ const Store = () => {
         axios
             .get(constants.URL.STORE)
             .then((resp) => {
-                const uniqueDescription = [];
-                resp?.data?.results?.map((item) => {
-                    var findItem = uniqueDescription.find((x) => x.description === item.description);
-                    if (!findItem) uniqueDescription.push(item);
-                });
-                console.log(uniqueDescription);
-                setRecords(uniqueDescription);
+                // const uniqueDescription = [];
+                // resp?.data?.results?.map((item) => {
+                //     var findItem = uniqueDescription.find((x) => x.description === item.description);
+                //     if (!findItem) uniqueDescription.push(item);
+                // });
+                // console.log(uniqueDescription);
+                setRecords(resp?.data?.results);
             })
             .catch((e) => console.error(e))
             .finally(() => {
@@ -42,7 +42,7 @@ const Store = () => {
                 <div className="card leave_table">
                     <DataTable className='' value={records} responsiveLayout="scroll">
                         <Column field="part_number" header="Part Number" style={{ minWidth: '200px' }}></Column>
-                        <Column field="description" header="Description" style={{ minWidth: '200px' }} ></Column>
+                        <Column field="item_description" header="Description" style={{ minWidth: '200px' }} ></Column>
                         <Column field="store_quantity" header="Quantity" style={{ minWidth: '200px' }} ></Column> 
                     </DataTable>
                 </div>
