@@ -14,26 +14,27 @@ import { useRef } from 'react';
 const Planner = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [records, setRecords] = useState();
-    const [visible, setVisible] = useState(false);
     const [date, setDate] = useState(null);
     const [partNo, setPartNo] = useState(null);
     const [count, setCount] = useState('');
     const toast = useRef(null);
+    const toastBC = useRef(null);
+
+    const clear = (submit) => {
+        console.log(submit);
+        toastBC.current.clear();
+        submit && show();
+    };
+    
+    const show = () => {
+        toast.current.show({ severity: 'success', summary: 'Delete', detail: 'Deleted, Successfully' });
+    };
+
     const cities = ["31020311X017", "656159400A"
     ];
-    const data = [
 
-        { Date: "09 Jun, 2023", PartNumber: "Cable", ClientName: "10000", Counts: "200" },
-        { Date: "09 Jun, 2023", PartNumber: "Grommet", ClientName: "20000", Counts: "500" },
-        { Date: "09 Jun, 2023", PartNumber: "Band Cable", ClientName: "50000", Counts: "300" },
-        { Date: "09 Jun, 2023", PartNumber: "Grommet", ClientName: "40000", Counts: "400" },
-        { Date: "09 Jun, 2023", PartNumber: "Grommet", ClientName: "40000", Counts: "400" },
-        { Date: "09 Jun, 2023", PartNumber: "Grommet", ClientName: "40000", Counts: "400" },
-        { Date: "09 Jun, 2023", PartNumber: "Grommet", ClientName: "40000", Counts: "400" },
-
-    ];
-    const iconTemplate = () => (
-        <i className={` pi pi-trash`} style={{ fontSize: '1.5rem', color: 'green' }}></i>
+    const iconTemplate = (rowData) => (
+        <i className="pi pi-trash" style={{ fontSize: '1.5rem', color: 'green' }} onClick={()=> confirm(rowData)} ></i>
     );
 
     useEffect(() => {
@@ -99,18 +100,79 @@ const Planner = () => {
     //         })
     // }
 
+    const handleDelete = () =>{
+        setIsLoading(true);
+        axios.patch(constants.URL.BOM_MASTER+"/"+selectedRow?._id)
+            .then((resp) => {
+                // console.log(resp.data.results);
+                toastBC.current.clear();
+                show();
+                getPlanner()
+            }).catch((e) => {
+                toast.current.show({ severity: "error", summary: "Failure", detail: e?.response?.data?.message });
+                console.error(e);
+            }).finally(() => {
+                setIsLoading(false);
+            })
+    }
+
+    const formatDate = (value) => {
+        let date = new Date(value)
+        return date?.toLocaleDateString('en-US', {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric'
+        });
+    };
+
+    const dateBodyTemplate = (rowData) => {
+        return formatDate(rowData?.createdAt);
+    };
+
+    const footerDateTemplate = () => {
+        return <Calendar value={date} onChange={(e) => setDate(e.value)} />
+    };
+
+    const footerPartNoTemplate = () => {
+        return <Dropdown value={partNo} onChange={(e) => setPartNo(e.value)} options={cities} placeholder="" className="w-full md:w-14rem"  />
+    };
+
+    const footerCountTemplate = () => {
+        return <InputText value={count} onChange={(e) => setCount(e.target.value)}  />
+    };
+
+    const confirm = () => {
+        // console.log(partNo, quantity, selectedRow);
+        toastBC.current.show({
+            severity: 'warn',
+            sticky: true,
+            className: 'border-none',
+            content: (
+                <div className="flex flex-column md:flex-row align-items-center" style={{ flex: '1' }}>
+                    <div className="text-center">
+                        <div className="font-bold text-xl my-3">Are you sure Delete this row?</div>
+                    </div>
+                    <div className="flex gap-2">
+                        <Button onClick={handleDelete} type="button" label="Yes" className="p-button-warning w-6rem ml-2" />
+                        <Button onClick={(e) => clear(false)} type="button" label="No" className="p-button-outlined p-button-warning w-6rem ml-2" />
+                    </div>
+                </div>
+            )
+        });
+    };
 
     return (
         <div>
         <Toast ref={toast} />
+            <Toast ref={toastBC} position="top-center" className='w-auto' />
             <div className="card p-fluid">
-                <div className="title1 flex justify-content-between">
-                    <h3 className="pt-2">Add Plan</h3>
+                <div className="flex justify-content-between align-items-center">
+                    <h3 className="mb-0">Add Plan</h3>
                     <div className="flex">
                         <div>
-                        <Button className="btn" label="Upload" onClick={() => setVisible(true)} />
+                        <Button className="btn" label="Upload" />
                         </div>
-                        <Button className="btn ml-3" label="Edit" onClick={() => setVisible(true)} />
+                        <Button className="btn ml-3" label="Edit" />
                     </div>
                 </div>
             </div>
@@ -119,22 +181,13 @@ const Planner = () => {
                     <div className="card leave_table">
                         <DataTable className='' value={records}
                             responsiveLayout="scroll">
-                            <Column field="createdAt" header="Date" style={{ minWidth: '200px' }}></Column>
-                            <Column field="part_number" header="Part Number" style={{ minWidth: '200px' }} ></Column>
+                            <Column field="createdAt" header="Date" footer={footerDateTemplate} style={{ minWidth: '200px' }} body={dateBodyTemplate}></Column>
+                            <Column field="part_number" header="Part Number" footer={footerPartNoTemplate} style={{ minWidth: '200px' }} ></Column>
                             <Column field="customer_id.customer_name" header="Client Name" style={{ minWidth: '200px' }} ></Column>
-                            <Column field="count" header="Counts" style={{ minWidth: '200px' }} ></Column>
+                            <Column field="count" header="Counts" footer={footerCountTemplate} style={{ minWidth: '200px' }} ></Column>
                             <Column body={iconTemplate} style={{ textAlign: 'center' }}></Column>
                         </DataTable>
-                        <div className="content my-3">
-                            <Calendar value={date} onChange={(e) => setDate(e.value)} showIcon style={{ minWidth: '25%' }} />
-                            <Dropdown value={partNo} onChange={(e) => setPartNo(e.value)} options={cities}
-                                placeholder="" className="w-full md:w-14rem" style={{ minWidth: '25%' }}  />
-                            <Dropdown value={count} onChange={(e) => setCount(e.value)} options={cities} optionLabel="name"
-                                placeholder="" className="w-full md:w-14rem" style={{ minWidth: '25%', visibility: "hidden" }}  />
-                            <InputText value={count} onChange={(e) => setCount(e.target.value)} style={{ minWidth: '25%' }}  />
-
-                        </div>
-                        <div className="Savebtn">
+                        <div className="Savebtn mt-3">
                             <Button label="Save" onClick={addPlanner} /></div>
                     </div>
 
