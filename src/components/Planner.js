@@ -16,7 +16,8 @@ const Planner = () => {
     const [records, setRecords] = useState();
     const [date, setDate] = useState(null);
     const [partNo, setPartNo] = useState(null);
-    const [count, setCount] = useState('');
+    const [count, setCount] = useState();
+    const [selectedRow, setSelectedRow] = useState(null);
     const toast = useRef(null);
     const toastBC = useRef(null);
 
@@ -57,8 +58,9 @@ const Planner = () => {
                 setIsLoading(false);
             });
     }
-
+console.log(selectedRow);
     const addPlanner = () => {
+        if(!selectedRow){
         const payload = {
             part_number: partNo,
             count: count,
@@ -75,34 +77,46 @@ const Planner = () => {
                 console.error(e);
             }).finally(() => {
                 setIsLoading(false);
+                setSelectedRow(null)
+                setPartNo()
+                setCount()
+                setDate()
             })
+        } else {
+            const payload = {
+                part_number: partNo,
+                count: count,
+                planner_date: date,
+            }
+            console.log(payload);
+            setIsLoading(true);
+            axios.patch(constants.URL.PLANNER+"/"+selectedRow?._id, payload)
+                .then((resp) => {
+                    // console.log(resp.data.results);
+                    getPlanner()
+                }).catch((e) => {
+                    toast.current.show({ severity: "error", summary: "Failure", detail: e?.response?.data?.message });
+                    console.error(e);
+                }).finally(() => {
+                    setIsLoading(false);
+                    setSelectedRow(null)
+                    setPartNo()
+                    setCount()
+                    setDate()
+                })
+
+        }
     }
 
-    // const handleUpdate = () =>{
-    //     const payload = {
-    //         part_number: partNo || selectedRow?.part_number,
-    //         qty_par_per: quantity || selectedRow?.qty_par_per
-    //     }
-    //     setIsLoading(true);
-    //     axios.patch(constants.URL.BOM_MASTER+"/"+selectedRow?._id, payload)
-    //         .then((resp) => {
-    //             // console.log(resp.data.results);
-    //             toastBC.current.clear();
-    //             show();
-    //             getBomMasterData()
-    //         }).catch((e) => {
-    //             toast.current.show({ severity: "error", summary: "Failure", detail: e?.response?.data?.message });
-    //             console.error(e);
-    //         }).finally(() => {
-    //             setIsLoading(false);
-    //             setVisible(false)
-    //             setSelectedRow(null)
-    //         })
-    // }
+    const handleUpdate = () =>{
+        setCount(selectedRow?.count)
+        setPartNo(selectedRow?.part_number)
+        setDate(selectedRow?.createdAt)
+    }
 
     const handleDelete = () =>{
         setIsLoading(true);
-        axios.patch(constants.URL.BOM_MASTER+"/"+selectedRow?._id)
+        axios.delete(constants.URL.PLANNER+"/"+selectedRow?._id)
             .then((resp) => {
                 // console.log(resp.data.results);
                 toastBC.current.clear();
@@ -113,6 +127,7 @@ const Planner = () => {
                 console.error(e);
             }).finally(() => {
                 setIsLoading(false);
+                setSelectedRow(null)
             })
     }
 
@@ -142,7 +157,6 @@ const Planner = () => {
     };
 
     const confirm = () => {
-        // console.log(partNo, quantity, selectedRow);
         toastBC.current.show({
             severity: 'warn',
             sticky: true,
@@ -172,15 +186,14 @@ const Planner = () => {
                         <div>
                         <Button className="btn" label="Upload" />
                         </div>
-                        <Button className="btn ml-3" label="Edit" />
+                        <Button className="btn ml-3" label="Edit" disabled={!selectedRow} onClick={handleUpdate} />
                     </div>
                 </div>
             </div>
             <div className="grid table-demo">
                 <div className="col-12">
                     <div className="card leave_table">
-                        <DataTable className='' value={records}
-                            responsiveLayout="scroll">
+                        <DataTable className='' value={records} selectionMode="single" selection={selectedRow} onSelectionChange={(e) => setSelectedRow(e.value)} responsiveLayout="scroll">
                             <Column field="createdAt" header="Date" footer={footerDateTemplate} style={{ minWidth: '200px' }} body={dateBodyTemplate}></Column>
                             <Column field="part_number" header="Part Number" footer={footerPartNoTemplate} style={{ minWidth: '200px' }} ></Column>
                             <Column field="customer_id.customer_name" header="Client Name" style={{ minWidth: '200px' }} ></Column>
