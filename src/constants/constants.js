@@ -10,6 +10,7 @@ const constants = {
         WIP: BASE_URL + "wip",
         INWARD: BASE_URL + "inward",
         PLANNER: BASE_URL + "planner",
+        SCHEDULE: BASE_URL + "dailySchedule",
     }
 }
 export default constants

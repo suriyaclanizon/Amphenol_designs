@@ -1,20 +1,69 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Calendar } from 'primereact/calendar';
 import { Button } from 'primereact/button';
 import { InputText } from "primereact/inputtext";
+import axios from 'axios';
+import constants from '../constants/constants';
+import { Toast } from 'primereact/toast';
 
 const CalendarTable = () => {
+  const toast = useRef(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [records, setRecords] = useState();
   const [tableHeader, setTableHeader] = useState([]);
   const [todayDate, setTodayDate] = useState(null);
-  const [shift1, setShift1] = useState(null);
-  const [shift2, setShift2] = useState(null);
-  const [shift3, setShift3] = useState(null);
+  const [shift1, setShift1] = useState("");
+  const [shift2, setShift2] = useState("");
+  const [shift3, setShift3] = useState("");
 
   useEffect(() => {
     // Get the current date and month
+    getSchedule()
     const currentDate = new Date();
     handleDateChange(currentDate)
   }, []);
+
+  useEffect(() => {
+    if(shift1 && shift2 && shift3){ 
+      const payload = {
+        part_number:"656159400A",
+        shift_1 : "4",
+        shift_2 : "5",
+        shift_3 : "6",
+        target: "2",
+        target_achieved: "2",
+        perday_achieved: "2"
+      }
+      // setIsLoading(true);
+      // axios
+      //     .post(constants.URL.SCHEDULE, payload)
+      //     .then((resp) => {
+      //         console.log(resp);
+      //         // setRecords(resp?.data?.results);
+      //     })
+      //     .catch((e) => console.error(e))
+      //     .finally(() => {
+      //         setIsLoading(false);
+      //         setShift1("")
+      //         setShift2("")
+      //         setShift3("")
+      //     });
+    }
+  }, [shift1,shift2,shift3]);
+
+const getSchedule = () => {
+    setIsLoading(true);
+    axios
+        .get(constants.URL.SCHEDULE)
+        .then((resp) => {
+            // console.log(resp?.data?.results);
+            setRecords(resp?.data?.results);
+        })
+        .catch((e) => console.error(e))
+        .finally(() => {
+            setIsLoading(false);
+        });
+}
 
   const formatDate = (date) => {
     const day = date?.getDate().toString().padStart(2, '0');
@@ -46,12 +95,72 @@ const CalendarTable = () => {
     setTodayDate(currentDate);
   }
 
-  const handlechange = (e,item,index)=>{
-    console.log(e.target.value,item,index);
+  const [shift1Values, setShift1Values] = useState([]);
+  const [shift2Values, setShift2Values] = useState([]);
+  const [shift3Values, setShift3Values] = useState([]);
+
+  const handleShift1change = (e, rowIndex, dateIndex,capacity)=>{
+    // console.log(e.target.value,date,index,capacity);
+    const newValue = e.target.value;
+    const shift1Value = parseFloat(newValue); // Convert the shift1 value to a number for comparison
+    if (shift1Value > capacity) {
+        setShift1("")
+        toast.current.show({ severity: "error", summary: "Failure", detail: "Entered value exceeds over shift capacity" });
+    }else { 
+      setShift1(newValue);
+      setShift1Values((prevValues) => {
+      const updatedValues = [...prevValues];
+      updatedValues[rowIndex] = {
+        ...updatedValues[rowIndex],
+        [dateIndex]: newValue,
+      };
+      return updatedValues;
+    });
+    }
+  }
+  
+  const handleShift2change = (e, rowIndex, dateIndex,capacity)=>{
+    // console.log(e.target.value,date,index,capacity);
+    const newValue = e.target.value;
+    const shift2Value = parseFloat(newValue); // Convert the shift1 value to a number for comparison
+    if (shift2Value > capacity) {
+        setShift2("")
+        toast.current.show({ severity: "error", summary: "Failure", detail: "Entered value exceeds over shift capacity" });
+    }else { 
+      setShift2(newValue);
+      setShift2Values((prevValues) => {
+      const updatedValues = [...prevValues];
+      updatedValues[rowIndex] = {
+        ...updatedValues[rowIndex],
+        [dateIndex]: newValue,
+      };
+      return updatedValues;
+    });
+    }
+  }
+  const handleShift3change = (e, rowIndex, dateIndex,capacity)=>{
+    // console.log(e.target.value,date,index,capacity);
+    const newValue = e.target.value;
+    const shift3Value = parseFloat(newValue); // Convert the shift1 value to a number for comparison
+    if (shift3Value > capacity) {
+        setShift3("")
+        toast.current.show({ severity: "error", summary: "Failure", detail: "Entered value exceeds over shift capacity" });
+    }else { 
+      setShift3(newValue);
+      setShift3Values((prevValues) => {
+      const updatedValues = [...prevValues];
+      updatedValues[rowIndex] = {
+        ...updatedValues[rowIndex],
+        [dateIndex]: newValue,
+      };
+      return updatedValues;
+    });
+    }
   }
 
   return (
     <div style={{ height: "calc(100vh - 15rem)" }}>
+    <Toast ref={toast} />
       <div className="card p-fluid p-2 px-4">
         <div className="flex justify-content-between align-items-center">
           <h4 className='mb-0 font-bold'>Schedule</h4>
@@ -97,23 +206,39 @@ const CalendarTable = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Sanden Vikas</td>
-            <td>2884-0850V</td>
-            <td>800</td>
-            <td></td>
-            <td>100</td>
-            {tableHeader?.map((date,index) => (
-              <>
-                <td>zone1</td>
-                <td>line1</td>
-                <td><InputText className="shift-box" placeholder='Shift 1' value={shift1} onChange={(e)=> handlechange(e,date,index)} /></td>
-                <td><InputText className="shift-box" placeholder='Shift 2' value={shift2} onChange={(e)=> handlechange(e,date,index)} /></td>
-                <td><InputText className="shift-box" placeholder='Shift 3' value={shift3} onChange={(e)=> handlechange(e,date,index)} /></td>
+          {records?.map((item, rowIndex)=>{
+            var line = item.zoneLineDetail_id.line;
+            var zone = item.zoneLineDetail_id.zone;
+            var capacity = item.zoneLineDetail_id.shift_capacity;
+            return(
+              <tr key={rowIndex}>
+            <td>{item.customer_id.customer_name}</td>
+            <td>{item.part_number}</td>
+            <td>{item.target}</td>
+            <td>{item.target_achieved}</td>
+            <td>{item.stock}</td>
+            {/* <td>{item.zoneLineDetail_id.line}</td>
+            <td>{item.zoneLineDetail_id.zone}</td> */}
+            {tableHeader?.map((date,dateIndex) => {
+                const shift1Value =
+                  (shift1Values[rowIndex] && shift1Values[rowIndex][dateIndex]) || '';
+                  const shift2Value =
+                    (shift2Values[rowIndex] && shift2Values[rowIndex][dateIndex]) || '';
+                    const shift3Value =
+                      (shift3Values[rowIndex] && shift3Values[rowIndex][dateIndex]) || '';
+                return (
+                  <React.Fragment key={dateIndex}>
+                <td>{zone}</td>
+                <td>{line}</td>
+                <td><InputText className="shift-box" placeholder='Shift 1' value={shift1Value} onChange={(e)=> handleShift1change(e,rowIndex, dateIndex,capacity)} /></td>
+                <td><InputText className="shift-box" placeholder='Shift 2' value={shift2Value} onChange={(e)=> handleShift2change(e,rowIndex, dateIndex,capacity)} /></td>
+                <td><InputText className="shift-box" placeholder='Shift 3' value={shift3Value} onChange={(e)=> handleShift3change(e,rowIndex, dateIndex,capacity)} /></td>
                 <td>100</td>
-              </>
-            ))}
+              </React.Fragment>
+            )})}
           </tr>
+            )
+          })}
         </tbody>
       </table>
       </div>
@@ -122,3 +247,7 @@ const CalendarTable = () => {
 };
 
 export default CalendarTable;
+
+
+
+// zone-line detail shift

@@ -111,7 +111,8 @@ console.log(selectedRow);
     const handleUpdate = () =>{
         setCount(selectedRow?.count)
         setPartNo(selectedRow?.part_number)
-        setDate(selectedRow?.createdAt)
+        var date = new Date(selectedRow?.createdAt)
+        setDate(date)
     }
 
     const handleDelete = () =>{
