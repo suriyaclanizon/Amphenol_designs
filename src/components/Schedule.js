@@ -172,8 +172,8 @@ const getSchedule = () => {
           <h4 className='mb-0 font-bold'>Schedule</h4>
           <div className="my-1 flex">
             <Calendar value={todayDate} onChange={(e) => handleDateChange(e.value)} style={{width: "100px"}} dateFormat="MM-yy" />
-            <div>
-            <Button className="btn1" label="Upload" />
+            <div className='flex'>
+            <Button className="btn1 mx-2" label="Upload" />
             <Button className="btn1" label="Save" onClick={handlesave} />
             </div>
           </div>

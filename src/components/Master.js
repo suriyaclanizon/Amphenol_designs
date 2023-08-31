@@ -21,7 +21,7 @@ const Master = () => {
             <div className="Trainee-wrapper">
                 <div className="flex justify-content-between card p-2 px-4">
                     <TabMenu model={items} activeIndex={activeIndex} onTabChange={(e) => setActiveIndex(e.index)} />
-                    <Button className="btn" label="Add" />
+                    {/* <Button className="btn" label="Add" /> */}
                 </div>
                 {activeIndex === 0 && <Store />}
                 {activeIndex === 1 && <WTP />}
