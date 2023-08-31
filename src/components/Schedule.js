@@ -24,21 +24,21 @@ const CalendarTable = () => {
   }, []);
 
   const handlesave = () => {
-    // if(shift1 && shift2 && shift3){ 
       const payload = {
         shifts :[
           {
-            shift_1 : "4",
-            shift_2 : "5",
-            shift_3 : "6",
-            perday_achieved: "2",
-            date_wise: new Date()
+            shift_1 : shift1,
+            shift_2 : shift2,
+            shift_3 : shift3,
+            // perday_achieved: "2",
+            date_wise: shiftDate
           }
         ]
       }
+      console.log(payload);
       setIsLoading(true);
       axios
-          .patch(constants.URL.SHIFT+"64f000a7bd4da491a151a07b", payload)
+          .patch(constants.URL.SHIFT+selectedId, payload)
           .then((resp) => {
               console.log(resp);
               // setRecords(resp?.data?.results);
@@ -50,7 +50,6 @@ const CalendarTable = () => {
               setShift2("")
               setShift3("")
           });
-    // }
   }
 
 const getSchedule = () => {
@@ -100,9 +99,11 @@ const getSchedule = () => {
   const [shift1Values, setShift1Values] = useState([]);
   const [shift2Values, setShift2Values] = useState([]);
   const [shift3Values, setShift3Values] = useState([]);
+  const [shiftDate, setShiftDate] = useState([]);
+  const [selectedId, setSelectedId] = useState([]);
 
-  const handleShift1change = (e, rowIndex, dateIndex,capacity)=>{
-    // console.log(e.target.value,date,index,capacity);
+  const handleShift1change = (e, rowIndex, dateIndex,capacity, date, selected_id)=>{
+    // console.log(e, rowIndex, dateIndex,capacity, date, selected_id);
     const newValue = e.target.value;
     const shift1Value = parseFloat(newValue); // Convert the shift1 value to a number for comparison
     if (shift1Value > capacity) {
@@ -110,6 +111,8 @@ const getSchedule = () => {
         toast.current.show({ severity: "error", summary: "Failure", detail: "Entered value exceeds over shift capacity" });
     }else { 
       setShift1(newValue);
+      setShiftDate(date)
+      setSelectedId(selected_id)
       setShift1Values((prevValues) => {
       const updatedValues = [...prevValues];
       updatedValues[rowIndex] = {
@@ -229,8 +232,8 @@ const getSchedule = () => {
               const currentMonth = g.getMonth();
               console.log(monthOfDate, currentMonth);
                 if (monthOfDate === currentMonth) {
-                  const nextDate = new Date(date.getTime() + 24 * 60 * 60 * 1000);
-                  const formattedDate = nextDate.toISOString().split('T')[0]; // Convert to ISO string and extract the date part
+                  // const nextDate = new Date(date.getTime() + 24 * 60 * 60 * 1000);
+                  const formattedDate = date.toISOString().split('T')[0]; // Convert to ISO string and extract the date part
                   console.log('formattedDate:', formattedDate);
                    
                    if (item?.shifts) {
@@ -270,7 +273,7 @@ const getSchedule = () => {
                           className="shift-box"
                           placeholder="Shift 1"
                           value={isEditable ? shift1StateValue : shift1Value}
-                          onChange={(e) => handleShift1change(e, rowIndex, dateIndex, capacity)}
+                          onChange={(e) => handleShift1change(e, rowIndex, dateIndex, capacity, date, item?._id)}
                           readOnly={!isEditable}
                         />
                       </td>
