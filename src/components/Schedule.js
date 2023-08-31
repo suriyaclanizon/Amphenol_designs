@@ -41,9 +41,13 @@ const CalendarTable = () => {
           .patch(constants.URL.SHIFT+selectedId, payload)
           .then((resp) => {
               console.log(resp);
+              toast.current.show({ severity: "success", summary: "Updated", detail: resp?.data?.message });
               // setRecords(resp?.data?.results);
           })
-          .catch((e) => console.error(e))
+          .catch((e) => {
+            toast.current.show({ severity: "error", summary: "Failure", detail: e?.response?.data?.message });
+            console.error(e);
+          })
           .finally(() => {
               setIsLoading(false);
               setShift1("")
