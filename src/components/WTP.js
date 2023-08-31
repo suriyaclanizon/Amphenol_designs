@@ -63,8 +63,10 @@ const WTP = () => {
     <Toast ref={toast} />
         <div className="grid table-demo">
         <div className="col-12">
-                <div className="card leave_table">
-                    <Button className="btn" label="Add" onClick={() => setVisible(true)} />
+                <div className="card leave_table relative">
+                    <div className='IS-WIP-add-btn'>
+                        <Button className="btn" label="Add" onClick={() => setVisible(true)} />
+                    </div>
                     <DataTable className='' value={records}
                          responsiveLayout="scroll">
                         <Column field="citemno_id.part_number" header="Part Number" style={{ minWidth: '200px' }}></Column>
