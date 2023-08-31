@@ -23,33 +23,35 @@ const CalendarTable = () => {
     handleDateChange(currentDate)
   }, []);
 
-  useEffect(() => {
-    if(shift1 && shift2 && shift3){ 
+  const handlesave = () => {
+    // if(shift1 && shift2 && shift3){ 
       const payload = {
-        part_number:"656159400A",
-        shift_1 : "4",
-        shift_2 : "5",
-        shift_3 : "6",
-        target: "2",
-        target_achieved: "2",
-        perday_achieved: "2"
+        shifts :[
+          {
+            shift_1 : "4",
+            shift_2 : "5",
+            shift_3 : "6",
+            perday_achieved: "2",
+            date_wise: new Date()
+          }
+        ]
       }
-      // setIsLoading(true);
-      // axios
-      //     .post(constants.URL.SCHEDULE, payload)
-      //     .then((resp) => {
-      //         console.log(resp);
-      //         // setRecords(resp?.data?.results);
-      //     })
-      //     .catch((e) => console.error(e))
-      //     .finally(() => {
-      //         setIsLoading(false);
-      //         setShift1("")
-      //         setShift2("")
-      //         setShift3("")
-      //     });
-    }
-  }, [shift1,shift2,shift3]);
+      setIsLoading(true);
+      axios
+          .patch(constants.URL.SHIFT+"64f000a7bd4da491a151a07b", payload)
+          .then((resp) => {
+              console.log(resp);
+              // setRecords(resp?.data?.results);
+          })
+          .catch((e) => console.error(e))
+          .finally(() => {
+              setIsLoading(false);
+              setShift1("")
+              setShift2("")
+              setShift3("")
+          });
+    // }
+  }
 
 const getSchedule = () => {
     setIsLoading(true);
@@ -157,6 +159,7 @@ const getSchedule = () => {
     });
     }
   }
+  console.log("records", records);
 
   return (
     <div style={{ height: "calc(100vh - 15rem)" }}>
@@ -168,6 +171,7 @@ const getSchedule = () => {
             <Calendar value={todayDate} onChange={(e) => handleDateChange(e.value)} style={{width: "100px"}} dateFormat="MM-yy" />
             <div>
             <Button className="btn1" label="Upload" />
+            <Button className="btn1" label="Save" onClick={handlesave} />
             </div>
           </div>
         </div>
@@ -216,27 +220,84 @@ const getSchedule = () => {
             <td>{item.part_number}</td>
             <td>{item.target}</td>
             <td>{item.target_achieved}</td>
-            <td>{item.stock}</td>
-            {/* <td>{item.zoneLineDetail_id.line}</td>
+                <td>{item.stock}</td>
+                {/* <td>{item.zoneLineDetail_id.line}</td>
             <td>{item.zoneLineDetail_id.zone}</td> */}
-            {tableHeader?.map((date,dateIndex) => {
-                const shift1Value =
-                  (shift1Values[rowIndex] && shift1Values[rowIndex][dateIndex]) || '';
-                  const shift2Value =
+                {tableHeader?.map((date, dateIndex) => {
+                const g = new Date(); 
+                const monthOfDate = date.getMonth();// Get the current date
+              const currentMonth = g.getMonth();
+              console.log(monthOfDate, currentMonth);
+                if (monthOfDate === currentMonth) {
+                  const nextDate = new Date(date.getTime() + 24 * 60 * 60 * 1000);
+                  const formattedDate = nextDate.toISOString().split('T')[0]; // Convert to ISO string and extract the date part
+                  console.log('formattedDate:', formattedDate);
+                   
+                   if (item?.shifts) {
+                     const shiftData = item.shifts.find((shift) => {
+                       const shiftDate = shift.date_wise.split('T')[0];
+                       console.log('shiftDate:', shiftDate);
+                       return shiftDate === formattedDate;
+                     });
+                     
+                     
+                     console.log('shiftData:', shiftData);
+
+                  // const shiftData = item.shifts[dateIndex]; // Assuming shifts array corresponds to tableHeader
+                  // console.log(shiftData);
+
+                  const shift1Value = shiftData ? shiftData.shift_1 : '';
+                  const shift2Value = shiftData ? shiftData.shift_2 : '';
+                  const shift3Value = shiftData ? shiftData.shift_3 : '';
+                  const perdayAchieved = shiftData ? shiftData.perday_achieved : '';
+
+                  const shift1StateValue =
+                    (shift1Values[rowIndex] && shift1Values[rowIndex][dateIndex]) || '';
+                  const shift2StateValue =
                     (shift2Values[rowIndex] && shift2Values[rowIndex][dateIndex]) || '';
-                    const shift3Value =
-                      (shift3Values[rowIndex] && shift3Values[rowIndex][dateIndex]) || '';
-                return (
-                  <React.Fragment key={dateIndex}>
-                <td>{zone}</td>
-                <td>{line}</td>
-                <td><InputText className="shift-box" placeholder='Shift 1' value={shift1Value} onChange={(e)=> handleShift1change(e,rowIndex, dateIndex,capacity)} /></td>
-                <td><InputText className="shift-box" placeholder='Shift 2' value={shift2Value} onChange={(e)=> handleShift2change(e,rowIndex, dateIndex,capacity)} /></td>
-                <td><InputText className="shift-box" placeholder='Shift 3' value={shift3Value} onChange={(e)=> handleShift3change(e,rowIndex, dateIndex,capacity)} /></td>
-                <td>100</td>
-              </React.Fragment>
-            )})}
-          </tr>
+                  const shift3StateValue =
+                    (shift3Values[rowIndex] && shift3Values[rowIndex][dateIndex]) || '';
+
+
+                  const isEditable = !shiftData; // Determine if the input should be editable
+
+                  return (
+                    <React.Fragment key={dateIndex}>
+                      <td>{zone}</td>
+                      <td>{line}</td>
+                      <td>
+                        <InputText
+                          className="shift-box"
+                          placeholder="Shift 1"
+                          value={isEditable ? shift1StateValue : shift1Value}
+                          onChange={(e) => handleShift1change(e, rowIndex, dateIndex, capacity)}
+                          readOnly={!isEditable}
+                        />
+                      </td>
+                      <td>
+                        <InputText
+                          className="shift-box"
+                          placeholder="Shift 2"
+                          value={isEditable ? shift2StateValue : shift2Value}
+                          onChange={(e) => handleShift2change(e, rowIndex, dateIndex, capacity)}
+                          readOnly={!isEditable}
+                        />
+                      </td>
+                      <td>
+                        <InputText
+                          className="shift-box"
+                          placeholder="Shift 3"
+                          value={isEditable ? shift3StateValue : shift3Value}
+                          onChange={(e) => handleShift3change(e, rowIndex, dateIndex, capacity)}
+                          readOnly={!isEditable}
+                        />
+                      </td>
+                      <td>{perdayAchieved}</td>
+                    </React.Fragment>
+                  );}}
+                })}
+
+              </tr>
             )
           })}
         </tbody>
